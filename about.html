@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عن أكاديمية مشكاة</title>
+<link rel="icon" href="logo.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<script>try{if(localStorage.getItem('mishkat_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+<style>
+:root{--blue:#0a84ff;--ink:#101828;--muted:#667085;--card:#fff;--line:#eaeef3;--bgfrom:#e3f4ff;--bgmid:#f4fbff;--bgto:#fffbea;--shadow:rgba(10,132,255,.14);color-scheme:light}
+:root[data-theme="dark"]{--ink:#f2f5f8;--muted:#9aa7b6;--card:#16212d;--line:#223041;--bgfrom:#0f2438;--bgmid:#0d141c;--bgto:#0d141c;--shadow:rgba(0,0,0,.35);color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Tajawal',system-ui,sans-serif;min-height:100vh;padding:30px 5% 50px;background:linear-gradient(135deg,var(--bgfrom),var(--bgmid) 60%,var(--bgto));color:var(--ink);text-align:center}
+.wrap{max-width:640px;margin:0 auto}
+
+/* الشعار الدائري: يدور وتحيط به أضواء ملونة */
+.orb{position:relative;width:130px;height:130px;margin:14px auto 22px}
+.orb::before,.orb::after{content:"";position:absolute;border-radius:50%;background:conic-gradient(#ff4d4d,#ffb703,#ffe14d,#2ee6a6,#38bdf8,#4d7cff,#ff4da6,#ff4d4d);animation:orbspin 4s linear infinite}
+.orb::before{inset:-12px;filter:blur(12px);opacity:.85}
+.orb::after{inset:-5px;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px))}
+.orb img{position:relative;z-index:1;display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fff;animation:orbspin 9s linear infinite}
+@keyframes orbspin{to{transform:rotate(360deg)}}
+
+h1{font-size:clamp(26px,5vw,34px);font-weight:800;line-height:1.3}
+.tag{color:var(--muted);font-size:15px;margin:6px 0 20px}
+
+/* البطاقة الشاملة */
+.card{background:var(--card);border:2px solid var(--blue);border-radius:26px;padding:6px 18px;text-align:right;box-shadow:0 16px 36px var(--shadow)}
+.row{display:flex;gap:12px;align-items:flex-start;padding:15px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:21px}
+.row h2{font-size:16px;font-weight:800;margin-bottom:4px}
+.row p{font-size:14px;line-height:1.9;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{padding:4px 12px;border-radius:999px;background:rgba(10,132,255,.1);color:var(--ink);font-size:13px;font-weight:700}
+.founder b{display:block;font-size:19px;font-weight:800;color:var(--blue);margin-top:2px}
+
+.go{display:inline-block;margin-top:22px;padding:12px 30px;border-radius:999px;background:var(--blue);color:#fff;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 10px 24px rgba(10,132,255,.3)}
+.bar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+.back,.mode{display:inline-block;padding:8px 20px;border:1.5px solid var(--blue);border-radius:999px;background:var(--card);color:var(--blue);font:inherit;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none}
+.back:hover,.mode:hover{background:var(--blue);color:#fff}
+
+@media (prefers-reduced-motion:reduce){.orb::before,.orb::after,.orb img{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="orb"><img src="logo.jpg" alt="شعار أكاديمية مشكاة" onerror="this.style.display='none'"></div>
+  <h1>أكاديمية مشكاة</h1>
+  <p class="tag">منصة تعليمية عربية للتعلّم بطريقة ممتعة ومنظمة</p>
+
+  <div class="card">
+
+    <div class="row">
+      <div class="ic" style="background:rgba(255,183,3,.18)">🎓</div>
+      <div>
+        <h2>الأطوار</h2>
+        <div class="chips">
+          <span class="chip">التعليم الابتدائي</span>
+          <span class="chip">شهادة التعليم المتوسط (البيام)</span>
+          <span class="chip">الثانوي (الباكالوريا)</span>
+          <span class="chip">الجامعة (قريباً)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ic" style="background:rgba(46,230,166,.18)">🧭</div>
+      <div>
+        <h2>الشعب</h2>
+        <div class="chips">
+          <span class="chip">علوم تجريبية</span>
+          <span class="chip">رياضيات</span>
+          <span class="chip">تقني رياضي</span>
+          <span class="chip">تسيير واقتصاد</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ic" style="background:rgba(56,189,248,.18)">📚</div>
+      <div>
+        <h2>المواد</h2>
+        <p>في الثانوي: الرياضيات والفيزياء والعلوم والعلوم الإسلامية والاقتصاد والهندسة حسب الشعبة. وفي الابتدائي: الرياضيات واللغة العربية والتربية العلمية والتربية الإسلامية، وتُضاف التاريخ والجغرافيا والإنجليزية من السنة الثالثة، والتربية المدنية والفرنسية من السنة الرابعة.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ic" style="background:rgba(255,77,166,.16)">🗓️</div>
+      <div>
+        <h2>السنوات</h2>
+        <p>في الابتدائي من السنة الأولى إلى الخامسة، وفي الباكالوريا مواضيع وحلول من 2008 إلى 2026.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ic" style="background:rgba(255,77,77,.16)">🎥</div>
+      <div>
+        <h2>الفيديوهات</h2>
+        <p>شروحات بالفيديو من أساتذة متميزين، منهم نور الدين وإنفينيتي وأميرة شنوف وليديا وعبد الله وكتفي شريف زينة وأيوب وشاوش وبوسعادي وشمس الدين، إضافة إلى حقيبة عكاشة.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ic" style="background:rgba(77,124,255,.16)">📖</div>
+      <div>
+        <h2>الدروس</h2>
+        <p>دروس مرتبة حسب شعبتك ومادتك ووحدتك، ولكل درس ملخصات وتمارين وفيديوهات وسلاسل تساعدك على المراجعة.</p>
+      </div>
+    </div>
+
+    <div class="row founder">
+      <div class="ic" style="background:rgba(255,225,77,.25)">👤</div>
+      <div>
+        <h2>المؤسس</h2>
+        <b>ياسين عيشون</b>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="go" href="branches.html">ابدأ التعلم الآن ←</a>
+
+  <div class="bar">
+    <a class="back" id="backb" href="index.html">← رجوع</a>
+    <a class="back" href="index.html">🏠 الرئيسية</a>
+    <button class="mode" id="mode" type="button">🌙 الوضع الليلي</button>
+  </div>
+</div>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('mode');
+  function paint(){btn.textContent=root.getAttribute('data-theme')==='dark'?'☀️ الوضع النهاري':'🌙 الوضع الليلي';}
+  paint();
+  btn.onclick=function(){
+    var d=root.getAttribute('data-theme')==='dark';
+    if(d){root.removeAttribute('data-theme');}else{root.setAttribute('data-theme','dark');}
+    try{localStorage.setItem('mishkat_theme',d?'light':'dark');}catch(e){}
+    paint();
+  };
+  document.getElementById('backb').onclick=function(e){
+    e.preventDefault();
+    if(history.length>1){history.back();}else{location.href='index.html';}
+  };
+})();
+</script>
+</body>
+</html>
