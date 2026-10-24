@@ -1733,3 +1733,35 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
       +'&t='+encodeURIComponent(TITLE+' — '+ch);
   });
 })();
+/* ===== 37) الصفحة الرئيسية: ضغط شعار الشريط العلوي يدوّره ويُشعل أضواءً ثم يفتح صفحة «عن المنصة» ===== */
+(function(){
+  if(!document.querySelector('.hero.wm')) return;
+  var img=document.querySelector('header .lg-img')||document.querySelector('header .logo i');
+  if(!img) return;
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var st=document.createElement('style');
+  st.textContent=''
+  +'header .lg-img,header .logo i{cursor:pointer}'
+  +'@keyframes lgspin{to{transform:rotate(720deg) scale(1.15)}}'
+  +'@keyframes lgglow{'
+  +'0%{box-shadow:0 0 0 2px #ff4d4d,0 0 16px 4px #ff4d4d}'
+  +'16%{box-shadow:0 0 0 2px #ffb703,0 0 16px 4px #ffb703}'
+  +'33%{box-shadow:0 0 0 2px #ffe14d,0 0 16px 4px #ffe14d}'
+  +'50%{box-shadow:0 0 0 2px #2ee6a6,0 0 16px 4px #2ee6a6}'
+  +'66%{box-shadow:0 0 0 2px #38bdf8,0 0 16px 4px #38bdf8}'
+  +'83%{box-shadow:0 0 0 2px #4d7cff,0 0 16px 4px #4d7cff}'
+  +'100%{box-shadow:0 0 0 2px #ff4da6,0 0 16px 4px #ff4da6}}'
+  +'html body header .lg-go{display:inline-grid;animation:lgspin 1s ease-in-out forwards,lgglow 1s linear forwards}';
+  document.head.appendChild(st);
+
+  var busy=false;
+  img.addEventListener('click',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if(busy) return;
+    busy=true;
+    img.classList.add('lg-go');
+    setTimeout(function(){location.href='about.html';},reduce?0:1000);
+  });
+})();
