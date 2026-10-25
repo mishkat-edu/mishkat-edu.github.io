@@ -14,13 +14,20 @@
 body{font-family:'Tajawal',system-ui,sans-serif;min-height:100vh;padding:30px 5% 50px;background:linear-gradient(135deg,var(--bgfrom),var(--bgmid) 60%,var(--bgto));color:var(--ink);text-align:center}
 .wrap{max-width:640px;margin:0 auto}
 
-/* الشعار الدائري: يدور وتحيط به أضواء ملونة */
-.orb{position:relative;width:130px;height:130px;margin:14px auto 22px}
-.orb::before,.orb::after{content:"";position:absolute;border-radius:50%;background:conic-gradient(#ff4d4d,#ffb703,#ffe14d,#2ee6a6,#38bdf8,#4d7cff,#ff4da6,#ff4d4d);animation:orbspin 4s linear infinite}
-.orb::before{inset:-12px;filter:blur(12px);opacity:.85}
+/* الشعار الدائري: ثابت بلا ألوان، ويدور بالألوان عند الضغط عليه ثم يعود */
+.orb{position:relative;width:130px;height:130px;margin:14px auto 22px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.orb:focus-visible{outline:3px solid var(--blue);outline-offset:8px;border-radius:50%}
+.orb::before,.orb::after{content:"";position:absolute;border-radius:50%;background:conic-gradient(#ff4d4d,#ffb703,#ffe14d,#2ee6a6,#38bdf8,#4d7cff,#ff4da6,#ff4d4d);opacity:0;pointer-events:none}
+.orb::before{inset:-12px;filter:blur(12px)}
 .orb::after{inset:-5px;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px))}
-.orb img{position:relative;z-index:1;display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fff;animation:orbspin 9s linear infinite}
-@keyframes orbspin{to{transform:rotate(360deg)}}
+.orb img{position:relative;z-index:1;display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 8px 22px var(--shadow)}
+.orb.go::before{animation:orbglow 1.6s ease-in-out,orbspin 1.6s linear}
+.orb.go::after{animation:orbring 1.6s ease-in-out,orbspin 1.6s linear}
+.orb.go img{animation:imgspin 1.6s ease-in-out}
+@keyframes orbglow{0%{opacity:0}15%{opacity:.85}80%{opacity:.85}100%{opacity:0}}
+@keyframes orbring{0%{opacity:0}15%{opacity:1}80%{opacity:1}100%{opacity:0}}
+@keyframes orbspin{to{transform:rotate(720deg)}}
+@keyframes imgspin{to{transform:rotate(720deg)}}
 
 h1{font-size:clamp(26px,5vw,34px);font-weight:800;line-height:1.3}
 .tag{color:var(--muted);font-size:15px;margin:6px 0 20px}
@@ -68,13 +75,14 @@ h1{font-size:clamp(26px,5vw,34px);font-weight:800;line-height:1.3}
 .back:hover,.mode:hover{background:var(--blue);color:#fff}
 
 @media (prefers-reduced-motion:reduce){
-  .orb::before,.orb::after,.orb img,.card,.ic.go{animation:none}
+  .card,.ic.go,.orb.go img{animation:none}
+  .orb.go::before,.orb.go::after{animation:none;opacity:.8}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="orb"><img src="logo.jpg" alt="شعار أكاديمية مشكاة" onerror="this.style.display='none'"></div>
+  <div class="orb" id="orb"><img src="logo.jpg" alt="شعار أكاديمية مشكاة" onerror="this.style.display='none'"></div>
   <h1>أكاديمية مشكاة</h1>
   <p class="tag">منصة تعليمية عربية للتعلّم بطريقة ممتعة ومنظمة</p>
 
@@ -171,6 +179,22 @@ h1{font-size:clamp(26px,5vw,34px);font-weight:800;line-height:1.3}
     e.preventDefault();
     if(history.length>1){history.back();}else{location.href='index.html';}
   };
+
+  /* الشعار: يدور بالألوان عند الضغط ثم يعود إلى حالته */
+  var orb=document.getElementById('orb'), oimg=orb.querySelector('img');
+  orb.setAttribute('role','button');
+  orb.setAttribute('tabindex','0');
+  orb.setAttribute('aria-label','شعار أكاديمية مشكاة');
+  function spinOrb(){
+    if(orb.classList.contains('go')) return;
+    orb.classList.add('go');
+    setTimeout(function(){orb.classList.remove('go');},1700);
+  }
+  orb.addEventListener('click',spinOrb);
+  orb.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();spinOrb();}
+  });
+  if(oimg) oimg.addEventListener('animationend',function(){orb.classList.remove('go');});
 
   /* الرسومات: تدور وتتلون عند الضغط عليها */
   document.querySelectorAll('.ic').forEach(function(ic){
