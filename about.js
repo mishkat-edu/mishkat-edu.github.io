@@ -1859,3 +1859,24 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
     sw.classList.add(next);
   });
 })();
+/* ===== 39) ألوان شارة همة: أزرق داكن + أسود + قليل من الأخضر الداكن ممزوجة ===== */
+(function(){
+  var st=document.createElement('style');
+  st.textContent=''
+  +'.bd .bd-card{background:radial-gradient(120% 70% at 100% 100%,rgba(6,95,70,.55) 0%,transparent 60%),radial-gradient(90% 60% at 0% 55%,rgba(5,60,50,.35) 0%,transparent 60%),linear-gradient(165deg,#0b2a5b 0%,#071a3d 38%,#03101c 70%,#02060f 100%);color:#eaf2ff;border:1px solid rgba(120,170,255,.25)}'
+  +'.bd .bd-top{background:linear-gradient(135deg,#123a7a 0%,#0a2a4a 50%,#053b2f 100%)}'
+  +'.bd .bd-card::before{background:rgba(0,0,0,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}'
+  +'.bd .bd-av{background:#fff;color:#0a1f45;border-color:#071a3d}'
+  +'.bd .bd-card h3{color:#fff}'
+  +'.bd .bd-role{color:#9db8e0}'
+  +'.bd .bd-n{background:rgba(255,255,255,.06)}'
+  +'.bd .bd-it b{color:#fff}'
+  +'.bd .bd-it p{color:#b9cdee}'
+  +'.bd .bd-note{background:rgba(255,210,122,.12);color:#ffd27a;border:1px solid rgba(255,210,122,.25)}'
+  +'.bd .bd-url{color:#7fb0ff}'
+  +'.bd .bd-dev{color:#fff}'
+  +'.bd .bd-bar{background:repeating-linear-gradient(90deg,#e8f0ff 0,#e8f0ff 2px,transparent 2px,transparent 4px,#e8f0ff 4px,#e8f0ff 5px,transparent 5px,transparent 8px,#e8f0ff 8px,#e8f0ff 11px,transparent 11px,transparent 12px)}'
+  +'.bd .bd-go{background:#fff;color:#0b2a5b}'
+  +'.bd .bd-go:hover,.bd .bd-go:focus-visible{background:#e6efff}';
+  document.head.appendChild(st);
+})();
