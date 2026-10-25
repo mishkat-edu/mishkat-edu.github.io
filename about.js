@@ -1765,4 +1765,22 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
     setTimeout(function(){location.href='about.html';},reduce?0:1000);
   });
 })();
- 
+/* ===== 38) زر الوضع الليلي/النهاري في الصفحة الرئيسية: يدور عند الضغط ===== */
+(function(){
+  var btn=document.getElementById('home-theme');
+  if(!btn) return;
+  var st=document.createElement('style');
+  st.textContent=''
+  +'.tg .tg-i{display:inline-block}'
+  +'@keyframes tgspin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.35)}100%{transform:rotate(360deg) scale(1)}}'
+  +'.tg.spin .tg-i{animation:tgspin .65s ease-in-out}'
+  +'@media (prefers-reduced-motion:reduce){.tg.spin .tg-i{animation:none}}';
+  document.head.appendChild(st);
+
+  btn.addEventListener('click',function(){
+    btn.classList.remove('spin');
+    void btn.offsetWidth;
+    btn.classList.add('spin');
+    setTimeout(function(){btn.classList.remove('spin');},700);
+  });
+})();
