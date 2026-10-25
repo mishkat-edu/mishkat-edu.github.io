@@ -1765,3 +1765,97 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
     setTimeout(function(){location.href='about.html';},reduce?0:1000);
   });
 })();
+/* ===== 38) نافذة «تعرّف على المنصة»: بطاقة عن همة على شكل شارة معلّقة ===== */
+(function(){
+  var mb=document.querySelector('#ov .mb');
+  if(!mb) return;
+
+  /* حذف النسخ القديمة (الكتل 27 و28 و29) إن وُجدت */
+  ['hm-card','hx-wrap','hf-wrap'].forEach(function(id){
+    var o=document.getElementById(id);
+    if(o) o.remove();
+  });
+  if(document.getElementById('bd-wrap')) return;
+
+  var st=document.createElement('style');
+  st.textContent=''
+  +'.bd{margin-top:24px;display:flex;justify-content:center}'
+  +'.bd-swing{display:flex;flex-direction:column;align-items:center;width:min(300px,100%);transform-origin:50% 0;animation:bdswing 3.4s cubic-bezier(.3,.6,.4,1) .35s both}'
+  +'.bd-swing.s2{animation:bdswing2 3s cubic-bezier(.3,.6,.4,1) both}'
+  +'.bd-swing.s3{animation:bdswing3 3s cubic-bezier(.3,.6,.4,1) both}'
+  +'@keyframes bdswing{0%{transform:translateY(-34px) rotate(8deg)}14%{transform:translateY(0) rotate(-6deg)}30%{transform:rotate(4.5deg)}46%{transform:rotate(-3deg)}62%{transform:rotate(2deg)}78%{transform:rotate(-1deg)}100%{transform:rotate(0)}}'
+  +'@keyframes bdswing2{0%{transform:rotate(7deg)}18%{transform:rotate(-5deg)}36%{transform:rotate(3.5deg)}54%{transform:rotate(-2deg)}72%{transform:rotate(1deg)}100%{transform:rotate(0)}}'
+  +'@keyframes bdswing3{0%{transform:rotate(7deg)}18%{transform:rotate(-5deg)}36%{transform:rotate(3.5deg)}54%{transform:rotate(-2deg)}72%{transform:rotate(1deg)}100%{transform:rotate(0)}}'
+  /* الحلقة والحبل والمشبك */
+  +'.bd-ring{width:26px;height:26px;border-radius:50%;border:4px solid #d3dae3;border-bottom-color:#9aa5b1;margin-bottom:-12px;position:relative;z-index:2}'
+  +'.bd-strap{position:relative;z-index:1;width:22px;height:80px;border-radius:3px;background:linear-gradient(90deg,#1a44c4,#2f6bff 50%,#1a44c4);box-shadow:0 3px 8px rgba(0,0,0,.28)}'
+  +'.bd-strap::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.55) 0 5px,transparent 5px 10px)}'
+  +'.bd-clip{position:relative;z-index:2;width:36px;height:20px;margin-top:-2px;border-radius:5px;background:linear-gradient(180deg,#eef1f5,#9aa5b1);box-shadow:0 3px 6px rgba(0,0,0,.3)}'
+  +'.bd-hook{position:relative;z-index:3;width:16px;height:20px;margin-top:-4px;margin-bottom:-14px;border:3px solid #c1c9d3;border-radius:50%}'
+  /* الشارة */
+  +'.bd-card{position:relative;width:100%;border-radius:22px;overflow:hidden;background:#fff;color:#0b1220;text-align:center;box-shadow:0 22px 44px rgba(0,10,40,.45);cursor:pointer}'
+  +'.bd-card::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34px;height:8px;border-radius:6px;background:rgba(0,0,0,.4);z-index:1}'
+  +'.bd-top{height:64px;padding:12px 16px 0;text-align:left;direction:ltr;background:linear-gradient(135deg,#123a7a 0%,#0a1a3c 55%,#02060f 100%);color:#bcd3ff;font:700 10px/1 "Courier New",monospace;letter-spacing:2px}'
+  +'.bd-top span{display:block;margin-top:22px}'
+  +'.bd-av{position:relative;width:66px;height:66px;margin:-33px auto 0;border-radius:50%;background:#0b1220;color:#fff;border:4px solid #fff;display:grid;place-items:center;font-size:30px;font-weight:800}'
+  +'.bd-card h3{margin:8px 0 0;font-size:22px;font-weight:800;color:#0b1220;text-shadow:none}'
+  +'.bd-role{margin:2px 0 0;font-size:13px;color:#667085;text-shadow:none}'
+  +'.bd-list{margin:12px 14px 0;display:grid;gap:9px;text-align:right}'
+  +'.bd-it{display:flex;gap:10px;align-items:flex-start}'
+  +'.bd-n{flex:none;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;direction:ltr;font-size:12px;font-weight:800;color:var(--c);background:rgba(10,132,255,.08);border:1.5px solid var(--c)}'
+  +'.bd-it b{display:block;font-size:13.5px;font-weight:800;color:#0b1220;line-height:1.5;text-shadow:none}'
+  +'.bd-it p{margin:0;font-size:12.5px;line-height:1.7;color:#5b6676;font-weight:500;text-shadow:none}'
+  +'.bd-note{margin:12px 14px 0;padding:9px 12px;border-radius:14px;background:#fff4dc;color:#7a4b00;font-size:12.5px;line-height:1.8;font-weight:700;text-align:right;text-shadow:none}'
+  +'.bd-foot{display:flex;direction:rtl;justify-content:space-between;align-items:flex-end;gap:10px;margin:14px 16px 0;text-align:right}'
+  +'.bd-url{display:block;direction:ltr;text-align:right;font:700 11px/1.4 "Courier New",monospace;color:#1a44c4;text-decoration:none}'
+  +'.bd-dev{display:block;margin-top:4px;font-size:12px;font-weight:800;color:#0b1220;line-height:1.6;text-shadow:none}'
+  +'.bd-bar{flex:none;width:72px;height:36px;background:repeating-linear-gradient(90deg,#0b1220 0,#0b1220 2px,#fff 2px,#fff 4px,#0b1220 4px,#0b1220 5px,#fff 5px,#fff 8px,#0b1220 8px,#0b1220 11px,#fff 11px,#fff 12px)}'
+  +'.bd-go{display:block;margin:14px 16px 16px;padding:11px;border-radius:999px;background:#0b1220;color:#fff;font-weight:800;font-size:14px;text-decoration:none;text-align:center}'
+  +'.bd-go:hover,.bd-go:focus-visible{background:#1a2a4a}'
+  +'@media (prefers-reduced-motion:reduce){.bd-swing,.bd-swing.s2,.bd-swing.s3{animation:none}}';
+  document.head.appendChild(st);
+
+  var d=document.createElement('div');
+  d.id='bd-wrap';
+  d.className='bd';
+  d.innerHTML=''
+  +'<div class="bd-swing">'
+  +'<div class="bd-ring"></div>'
+  +'<div class="bd-strap"></div>'
+  +'<div class="bd-clip"></div>'
+  +'<div class="bd-hook"></div>'
+  +'<div class="bd-card">'
+  +'<div class="bd-top"><span>HIMMA PASS · 2026</span></div>'
+  +'<div class="bd-av">ه</div>'
+  +'<h3>منصة همة</h3>'
+  +'<p class="bd-role">ملخصات ومراجعة</p>'
+
+  +'<div class="bd-list">'
+  +'<div class="bd-it" style="--c:#0a84ff"><span class="bd-n">01</span><div><b>مجانية بالكامل</b><p>لا حسابات ولا اشتراكات ولا دفع. تموّل المنصة بإعلانات خفيفة لا تعيق المراجعة.</p></div></div>'
+  +'<div class="bd-it" style="--c:#f59e0b"><span class="bd-n">02</span><div><b>مرتبة كما تدرس</b><p>الشعبة ← المادة ← الوحدة ← نوع المورد. تصل إلى ما تريده في خطوات قليلة.</p></div></div>'
+  +'<div class="bd-it" style="--c:#10b981"><span class="bd-n">03</span><div><b>مصممة للهاتف</b><p>واجهة عربية خفيفة وسريعة، مع تنقل سفلي يسهل الوصول إليه بإبهام واحد.</p></div></div>'
+  +'</div>'
+
+  +'<p class="bd-note">المحتوى يُضاف تدريجيًا. الأقسام التي تحمل علامة «قيد الإضافة» جاهزة هيكليًا وسيُنشر فيها المحتوى الحقيقي فور تجهيزه</p>'
+
+  +'<div class="bd-foot">'
+  +'<div><a class="bd-url" href="https://himma-sigma.vercel.app/" target="_blank" rel="noopener">himma-sigma.vercel.app</a>'
+  +'<span class="bd-dev">المطور: داودي محمد جلال الدين 👨‍💻</span></div>'
+  +'<span class="bd-bar" aria-hidden="true"></span>'
+  +'</div>'
+
+  +'<a class="bd-go" href="https://himma-sigma.vercel.app/" target="_blank" rel="noopener">زيارة منصة همة ←</a>'
+  +'</div>'
+  +'</div>';
+  mb.appendChild(d);
+
+  /* الضغط على الشارة يؤرجحها من جديد */
+  var sw=d.querySelector('.bd-swing');
+  d.querySelector('.bd-card').addEventListener('click',function(e){
+    if(e.target.closest&&e.target.closest('a')) return;
+    var next=sw.classList.contains('s2')?'s3':'s2';
+    var old=next==='s2'?'s3':'s2';
+    sw.classList.remove(old);
+    sw.classList.add(next);
+  });
+})();
