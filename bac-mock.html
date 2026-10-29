@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الباكالوريا التجريبية - أكاديمية مشكاة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css">
+<script>
+try{if(localStorage.getItem('mishkat_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}
+</script>
+<style>
+:root{--blue:#0a84ff;--ink:#101828;--muted:#667085;--card:#fff;--line:#eaeef3;--bgfrom:#e3f4ff;--bgmid:#f4fbff;--bgto:#fffbea;--shadow:rgba(10,132,255,.12);color-scheme:light}
+:root[data-theme="dark"]{--ink:#f2f5f8;--muted:#9aa7b6;--card:#16212d;--line:#223041;--bgfrom:#0f2438;--bgmid:#0d141c;--bgto:#0d141c;--shadow:rgba(0,0,0,.35);color-scheme:dark}
+[hidden]{display:none!important}
+body{display:block;padding:40px 5%;min-height:100vh;background:linear-gradient(135deg,var(--bgfrom),var(--bgmid) 60%,var(--bgto));color:var(--ink)}
+.wrap{max-width:640px;margin:0 auto;text-align:center}
+.logo,h1{color:var(--ink)}
+h1{font-size:30px;margin-bottom:6px}
+.sub{color:var(--muted)}
+
+/* شريط البحث بأسلوب محرك البحث */
+.gs{display:flex;align-items:center;gap:10px;height:52px;margin:24px auto 0;padding:0 18px;max-width:560px;border-radius:999px;background:var(--card);border:1px solid var(--line);box-shadow:0 1px 6px rgba(32,33,36,.16);transition:box-shadow .2s,border-color .2s;direction:rtl}
+.gs:focus-within{box-shadow:0 2px 12px rgba(32,33,36,.26);border-color:transparent}
+.gs-ic{flex:none;width:20px;height:20px;color:#9aa0a6}
+.gs input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:var(--ink);text-align:right}
+.gs input::placeholder{color:#9aa0a6}
+.gs-x{flex:none;width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:16px;cursor:pointer}
+.gs-x:hover{background:var(--line)}
+.sugg{max-width:560px;margin:8px auto 0;text-align:right;background:var(--card);border-radius:20px;box-shadow:0 6px 20px rgba(32,33,36,.18);overflow:hidden;border:1px solid var(--line)}
+.sg{display:block;padding:12px 20px;color:var(--ink);text-decoration:none;border-top:1px solid var(--line)}
+.sg:first-child{border-top:0}
+.sg:hover,.sg:focus-visible,.sg.on{background:rgba(10,132,255,.1)}
+.sg b{display:block;font-size:15px}
+.sg small{display:block;color:var(--muted);font-size:12.5px}
+.nores{padding:14px 20px;color:var(--muted);font-size:14px}
+
+/* مسار التنقل */
+.crumb{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:18px;font-size:13.5px;color:var(--muted)}
+.crumb a{color:var(--blue);text-decoration:none;font-weight:700}
+.crumb a:hover{text-decoration:underline}
+
+/* البطاقات */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.grid.c3 .tl:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 7px)}
+@media (min-width:700px){
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .grid.c3 .tl:last-child:nth-child(odd){grid-column:auto;width:auto}
+}
+.tl{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:110px;padding:18px 10px;border-radius:18px;background:var(--card);border:2px solid var(--blue);color:var(--ink);text-decoration:none;font-family:inherit;font-weight:800;font-size:16px;line-height:1.4;box-shadow:0 10px 28px var(--shadow);transition:transform .2s;cursor:pointer}
+.tl:hover,.tl:focus-visible{transform:translateY(-3px)}
+.tl.year{font-size:30px;min-height:96px}
+.tl-ic{width:54px;height:54px;margin-bottom:8px;border-radius:50%;background:linear-gradient(145deg,#4cc3ff,#0a84ff 55%,#1d57d6);box-shadow:0 10px 20px rgba(10,132,255,.35),inset 0 1px 0 rgba(255,255,255,.4);display:grid;place-items:center}
+.tl-ic svg{width:28px;height:28px}
+.tl-sub{display:block;margin-top:4px;font-size:12.5px;font-weight:500;color:var(--muted)}
+
+.bar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px}
+.back,.mode{display:inline-block;width:auto;margin:0;padding:8px 20px;border:1.5px solid var(--blue);border-radius:999px;background:var(--card);color:var(--blue);font:inherit;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none}
+.back:hover,.back:focus-visible,.mode:hover,.mode:focus-visible{background:var(--blue);color:#fff}
+.mock{background:var(--card);border-radius:16px;padding:24px;margin:34px auto 0;max-width:420px;box-shadow:0 20px 50px var(--shadow)}
+.mock .l{height:10px;border-radius:6px;background:var(--line);margin-bottom:12px}
+.mock .g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.mock .g div{height:110px;border-radius:12px}
+.mock .g div:nth-child(1){background:#fff7d6}
+.mock .g div:nth-child(2){background:#dff6ff}
+.mock .g div:nth-child(3){background:#dcebff}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);max-width:90vw;padding:12px 22px;border-radius:999px;background:var(--card);color:var(--ink);border:1.5px solid var(--blue);box-shadow:0 14px 34px var(--shadow);font-weight:700;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:30;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">أكاديمية مشكاة</div>
+  <h1 id="ttl">الباكالوريا التجريبية</h1>
+  <p class="sub" id="sub">اختر السنة</p>
+
+  <div class="gs" role="search">
+    <svg class="gs-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="ابحث عن السنة أو الشعبة أو المادة" autocomplete="off" aria-label="بحث">
+    <button class="gs-x" id="gsx" type="button" aria-label="مسح" hidden>✕</button>
+  </div>
+  <div class="sugg" id="sugg" hidden></div>
+
+  <nav class="crumb" id="crumb" hidden></nav>
+  <div class="grid c3" id="grid"></div>
+
+  <div class="bar">
+    <a class="back" id="backb" href="index.html">← العودة للرئيسية</a>
+    <button class="mode" id="mode" type="button">🌙 الوضع الليلي</button>
+  </div>
+
+  <div class="mock" aria-hidden="true">
+    <div class="l" style="width:70%"></div>
+    <div class="l"></div>
+    <div class="l" style="width:85%"></div>
+    <div class="g"><div></div><div></div><div></div></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ✏️ ملفات الباكالوريا التجريبية: أضف كل ملف بهذا الشكل مع فاصلة بين الأسطر
+   'السنة|الشعبة|المادة':'اسم-الملف.pdf'   (أو رابط كامل يبدأ بـ https://)
+   مثال:  '2026|علوم تجريبية|الرياضيات':'mock-2026-se-math.pdf', */
+var MOCK_LINKS={
+};
+
+var V='<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">';
+var ICO={
+  pi:V+'<path stroke-width="2.4" d="M7 9.5H25M12.5 9.5C12.5 14.5 12 18.5 10 22.5M19.5 9.5V21C19.5 23 20.3 24 22.3 24"/></svg>',
+  calc:V+'<rect x="7" y="3" width="18" height="26" rx="3.5"/><rect x="10" y="6.5" width="12" height="5" rx="1.2"/><path stroke-width="2.6" d="M11 16.5h.01M16 16.5h.01M21 16.5h.01M11 21h.01M16 21h.01M21 21h.01M11 25.2h.01M16 25.2h.01M21 25.2h.01"/></svg>',
+  atom:V+'<circle cx="16" cy="16" r="2.6" fill="#fff" stroke="none"/><g stroke-width="1.8"><ellipse cx="16" cy="16" rx="13" ry="5.2"/><ellipse cx="16" cy="16" rx="13" ry="5.2" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5.2" transform="rotate(120 16 16)"/></g></svg>',
+  dna:V+'<path d="M10 3C10 10 22 10 22 16C22 22 10 22 10 29"/><path d="M22 3C22 10 10 10 10 16C10 22 22 22 22 29"/><path stroke-width="1.6" opacity=".85" d="M12 7H20M12 12.4H20M12 19.6H20M12 24.9H20"/></svg>',
+  book:V+'<path d="M16 7C13 5 9 4.5 5 5V24C9 23.5 13 24 16 26"/><path d="M16 7C19 5 23 4.5 27 5V24C23 23.5 19 24 16 26"/><path d="M16 7V26"/></svg>',
+  gear:V+'<circle cx="16" cy="16" r="8" stroke-width="2.2"/><circle cx="16" cy="16" r="3" stroke-width="2"/><path stroke-width="3.2" d="M16 3.5V6.7M16 25.3V28.5M3.5 16H6.7M25.3 16H28.5M7.2 7.2L9.5 9.5M22.5 22.5L24.8 24.8M24.8 7.2L22.5 9.5M9.5 22.5L7.2 24.8"/></svg>',
+  chart:V+'<g fill="#fff" stroke="none"><rect x="5" y="21" width="5" height="7" rx="1.2"/><rect x="13.5" y="17" width="5" height="11" rx="1.2"/><rect x="22" y="13" width="5" height="15" rx="1.2"/></g><path d="M5 15L12 10.5L17 12.5L26 4.5"/><path d="M21 4.5H26V9.5"/></svg>'
+};
+
+var YEARS=['2026','2025','2024'];
+
+var BRANCHES=[
+  {n:'علوم تجريبية',ic:ICO.dna,s:['الرياضيات','الفيزياء','العلوم','العلوم الإسلامية']},
+  {n:'رياضيات',ic:ICO.calc,s:['الرياضيات','الفيزياء','العلوم','العلوم الإسلامية']},
+  {n:'تقني رياضي',ic:ICO.gear,s:['الرياضيات','الفيزياء','الهندسة','العلوم الإسلامية']},
+  {n:'تسيير واقتصاد',ic:ICO.chart,s:['الرياضيات','الاقتصاد','العلوم الإسلامية']}
+];
+var SUBJ_IC={'الرياضيات':ICO.pi,'الفيزياء':ICO.atom,'العلوم':ICO.dna,'العلوم الإسلامية':ICO.book,'الهندسة':ICO.gear,'الاقتصاد':ICO.chart};
+
+var $=function(id){return document.getElementById(id);};
+var root=document.documentElement, modeBtn=$('mode');
+
+/* الوضع الليلي */
+function paint(){modeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️ الوضع النهاري':'🌙 الوضع الليلي';}
+paint();
+modeBtn.onclick=function(){
+  var dark=root.getAttribute('data-theme')==='dark';
+  if(dark){root.removeAttribute('data-theme');}else{root.setAttribute('data-theme','dark');}
+  try{localStorage.setItem('mishkat_theme',dark?'light':'dark');}catch(e){}
+  paint();
+};
+
+/* التنقل */
+var P=new URLSearchParams(location.search);
+var Y=P.get('y')||'', B=P.get('b')||'';
+if(YEARS.indexOf(Y)<0) Y='';
+var BR=null;
+for(var i=0;i<BRANCHES.length;i++){ if(BRANCHES[i].n===B){BR=BRANCHES[i];break;} }
+if(!BR) B='';
+if(!Y){B='';BR=null;}
+
+function link(o){
+  var p=[];
+  if(o.y) p.push('y='+encodeURIComponent(o.y));
+  if(o.b) p.push('b='+encodeURIComponent(o.b));
+  return 'bac-mock.html'+(p.length?'?'+p.join('&'):'');
+}
+
+/* مسار التنقل */
+(function(){
+  var c=$('crumb');
+  var items=[{t:'الباكالوريا التجريبية',h:link({})}];
+  if(Y) items.push({t:Y,h:link({y:Y})});
+  if(B) items.push({t:B,h:link({y:Y,b:B})});
+  if(items.length<2){c.hidden=true;return;}
+  c.hidden=false;
+  items.forEach(function(it,k){
+    if(k>0){var s=document.createElement('span');s.textContent='‹';c.appendChild(s);}
+    if(k<items.length-1){var a=document.createElement('a');a.href=it.h;a.textContent=it.t;c.appendChild(a);}
+    else{var sp=document.createElement('span');sp.textContent=it.t;c.appendChild(sp);}
+  });
+})();
+
+/* العنوان والرجوع */
+(function(){
+  var title=B||(Y?'الباكالوريا التجريبية '+Y:'الباكالوريا التجريبية');
+  var subText=B?'اختر المادة التي تريدها':Y?'اختر الشعبة':'اختر السنة';
+  $('ttl').textContent=title;
+  $('sub').textContent=subText;
+  document.title=title+' - أكاديمية مشكاة';
+  var back=$('backb');
+  if(!Y){back.textContent='← العودة للرئيسية';back.href='index.html';}
+  else{
+    back.textContent='← رجوع';
+    back.href=!B?link({}):link({y:Y});
+  }
+})();
+
+var toast=$('toast'), tm;
+function say(msg){
+  toast.textContent=msg;
+  toast.classList.add('on');
+  clearTimeout(tm);
+  tm=setTimeout(function(){toast.classList.remove('on');},2600);
+}
+function tile(label,sub,href,opts){
+  var a=document.createElement('a');
+  a.className='tl'+(opts&&opts.year?' year':'');
+  a.href=href;
+  if(opts&&opts.ic){
+    var ic=document.createElement('span');
+    ic.className='tl-ic';
+    ic.innerHTML=opts.ic;
+    a.appendChild(ic);
+  }
+  var t=document.createElement('span');
+  t.textContent=label;
+  a.appendChild(t);
+  if(sub){
+    var s=document.createElement('span');
+    s.className='tl-sub';
+    s.textContent=sub;
+    a.appendChild(s);
+  }
+  return a;
+}
+
+/* عرض البطاقات حسب المستوى */
+var g=$('grid');
+if(!Y){
+  g.className='grid c3';
+  YEARS.forEach(function(y){
+    g.appendChild(tile(y,'الباكالوريا التجريبية',link({y:y}),{year:true}));
+  });
+}else if(!B){
+  g.className='grid';
+  BRANCHES.forEach(function(b){
+    g.appendChild(tile(b.n,b.s.length+' مواد',link({y:Y,b:b.n}),{ic:b.ic}));
+  });
+}else{
+  g.className='grid';
+  BR.s.forEach(function(sj){
+    var key=Y+'|'+B+'|'+sj;
+    var u=MOCK_LINKS[key]||'';
+    var href='#';
+    if(u){
+      href=/^https?:/i.test(u)?u:'pdfview.html?f='+encodeURIComponent(u)+'&t='+encodeURIComponent('الباكالوريا التجريبية '+Y+' — '+B+' — '+sj);
+    }
+    var a=tile(sj,u?'متاح':'قيد الإعداد',href,{ic:SUBJ_IC[sj]||ICO.book});
+    if(u){
+      if(/^https?:/i.test(u)){a.target='_blank';a.rel='noopener';}
+    }else{
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        say('مادة «'+sj+'» لـ'+B+' ('+Y+') قيد الإعداد، وستُضاف قريباً ✨');
+      });
+    }
+    g.appendChild(a);
+  });
+}
+
+/* محرك البحث */
+function norm(s){
+  return String(s).replace(/[\u064B-\u065F\u0670]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ـ/g,'').toLowerCase().trim();
+}
+var IDX=[];
+YEARS.forEach(function(y){
+  BRANCHES.forEach(function(b){
+    IDX.push({
+      y:y,b:b.n,
+      hay:norm(['الباكالوريا التجريبية','باكالوريا تجريبية','بكالوريا تجريبية','تجريبي',y,b.n].concat(b.s).join(' ')),
+      label:'الباكالوريا التجريبية '+y+' • '+b.n,
+      sub:b.s.join(' • ')
+    });
+  });
+});
+
+var q=$('q'), box=$('sugg'), gx=$('gsx'), act=-1, list=[];
+function run(){
+  var v=norm(q.value).split(/\s+/).filter(Boolean);
+  gx.hidden=!q.value;
+  box.innerHTML='';
+  list=[];
+  act=-1;
+  if(!v.length){box.hidden=true;return;}
+  var res=IDX.filter(function(r){
+    return v.every(function(w){return r.hay.indexOf(w)>-1;});
+  });
+  box.hidden=false;
+  if(!res.length){
+    var n=document.createElement('div');
+    n.className='nores';
+    n.textContent='لا توجد نتائج مطابقة، جرّب سنة مثل 2025 أو شعبة أو مادة.';
+    box.appendChild(n);
+    return;
+  }
+  res.slice(0,10).forEach(function(r){
+    var a=document.createElement('a');
+    a.className='sg';
+    a.href=link({y:r.y,b:r.b});
+    var bb=document.createElement('b');
+    bb.textContent=r.label;
+    var s=document.createElement('small');
+    s.textContent=r.sub;
+    a.appendChild(bb);
+    a.appendChild(s);
+    box.appendChild(a);
+    list.push(a);
+  });
+}
+function hl(){list.forEach(function(a,k){a.classList.toggle('on',k===act);});}
+q.addEventListener('input',run);
+q.addEventListener('focus',run);
+q.addEventListener('keydown',function(e){
+  if(e.key==='ArrowDown'&&list.length){e.preventDefault();act=(act+1)%list.length;hl();}
+  else if(e.key==='ArrowUp'&&list.length){e.preventDefault();act=(act-1+list.length)%list.length;hl();}
+  else if(e.key==='Enter'){
+    e.preventDefault();
+    var t=list[act>=0?act:0];
+    if(t) location.href=t.href;
+  }
+  else if(e.key==='Escape'){q.value='';run();}
+});
+gx.addEventListener('click',function(){q.value='';run();q.focus();});
+document.addEventListener('click',function(e){
+  if(!e.target.closest||!e.target.closest('.gs,.sugg')) box.hidden=true;
+});
+</script>
+<script src="about.js"></script>
+</body>
+</html>
