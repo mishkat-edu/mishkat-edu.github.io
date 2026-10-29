@@ -1784,3 +1784,56 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
     setTimeout(function(){btn.classList.remove('spin');},700);
   });
 })();
+/* ===== 40) الصفحة الرئيسية: زر «الباكالوريا» يتبدّل كل 3 ثوانٍ إلى «الباكالوريا التجريبية» ===== */
+(function(){
+  var a=document.querySelector('.hbtns2 a.btn.wt')||document.querySelector('.hbtns a[href="bac.html"]');
+  if(!a||a.getAttribute('data-alt')) return;
+  a.setAttribute('data-alt','1');
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ITEMS=[
+    {t:'الباكالوريا',h:'bac.html'},
+    {t:'الباكالوريا التجريبية',h:'bac-mock.html'}
+  ];
+
+  var st=document.createElement('style');
+  st.textContent=''
+  +'#bac-alt .bw{display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:opacity .25s,transform .25s}'
+  +'#bac-alt .bw.out{opacity:0;transform:translateY(-8px)}'
+  +'#bac-alt .bt{font-size:14.5px;line-height:1.25}'
+  +'@media (prefers-reduced-motion:reduce){#bac-alt .bw{transition:none}}';
+  document.head.appendChild(st);
+
+  a.id='bac-alt';
+  a.innerHTML='<span class="bw"><span class="bi">📝</span><span class="bt"></span></span>';
+  var bw=a.querySelector('.bw'), bt=a.querySelector('.bt');
+  var i=0, paused=false, timer=null;
+
+  function draw(){
+    var it=ITEMS[i];
+    bt.textContent=it.t;
+    a.href=it.h;
+  }
+  draw();
+
+  function next(){
+    bw.classList.add('out');
+    setTimeout(function(){
+      i=(i+1)%ITEMS.length;
+      draw();
+      bw.classList.remove('out');
+    },reduce?0:250);
+  }
+  function start(){
+    clearInterval(timer);
+    timer=setInterval(function(){if(!paused) next();},3000);
+  }
+  start();
+
+  a.addEventListener('mouseenter',function(){paused=true;});
+  a.addEventListener('mouseleave',function(){paused=false;});
+  a.addEventListener('focus',function(){paused=true;});
+  a.addEventListener('blur',function(){paused=false;});
+  a.addEventListener('touchstart',function(){paused=true;},{passive:true});
+  a.addEventListener('touchend',function(){setTimeout(function(){paused=false;},1500);},{passive:true});
+})();
