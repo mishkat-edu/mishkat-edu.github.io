@@ -8,29 +8,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <script>try{if(localStorage.getItem('mishkat_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
 <style>
-:root{--ink:#f2f6ff;--muted:#a9b9dc;--rowa:rgba(18,36,84,.88);--rowb:rgba(7,16,44,.92);--rowline:rgba(120,160,255,.16);--frame:rgba(6,14,38,.72);--chip:rgba(10,30,80,.6);--chipline:rgba(110,160,255,.35);--pl:#cfe0ff;--plbg:rgba(10,30,80,.5);color-scheme:dark}
-html[data-theme="light"]{--ink:#101828;--muted:#52627f;--rowa:#ffffff;--rowb:#f3f8ff;--rowline:rgba(10,60,140,.14);--frame:rgba(255,255,255,.7);--chip:rgba(10,132,255,.09);--chipline:rgba(10,132,255,.3);--pl:#0a54c8;--plbg:rgba(255,255,255,.8);color-scheme:light}
+:root{--ink:#f2f6ff;--muted:#a9b9dc;--rowa:rgba(18,36,84,.88);--rowb:rgba(7,16,44,.92);--rowline:rgba(120,160,255,.16);--frame:rgba(6,14,38,.78);--chip:rgba(10,30,80,.6);--chipline:rgba(110,160,255,.35);--pl:#cfe0ff;--plbg:rgba(10,30,80,.5);color-scheme:dark}
+html[data-theme="light"]{--ink:#101828;--muted:#52627f;--rowa:#ffffff;--rowb:#f3f8ff;--rowline:rgba(10,60,140,.14);--frame:rgba(255,255,255,.75);--chip:rgba(10,132,255,.09);--chipline:rgba(10,132,255,.3);--pl:#0a54c8;--plbg:rgba(255,255,255,.8);color-scheme:light}
 *{box-sizing:border-box;margin:0}
 body{font-family:'Tajawal',system-ui,sans-serif;min-height:100vh;color:var(--ink);text-align:center;overflow-x:hidden;padding:18px 14px 44px;
-  background:radial-gradient(520px 380px at 90% -2%,rgba(255,176,70,.30),transparent 62%),radial-gradient(480px 360px at 8% 6%,rgba(40,110,255,.22),transparent 60%),radial-gradient(700px 520px at 50% 100%,rgba(20,60,160,.28),transparent 60%),#050b1c}
+  background:
+    radial-gradient(26px 26px at 14% 22%,rgba(255,214,140,.22),transparent 70%),
+    radial-gradient(18px 18px at 86% 38%,rgba(255,214,140,.18),transparent 70%),
+    radial-gradient(34px 34px at 8% 62%,rgba(120,180,255,.16),transparent 70%),
+    radial-gradient(22px 22px at 92% 74%,rgba(255,214,140,.16),transparent 70%),
+    radial-gradient(520px 380px at 90% -2%,rgba(255,176,70,.34),transparent 62%),
+    radial-gradient(480px 360px at 8% 6%,rgba(40,110,255,.22),transparent 60%),
+    radial-gradient(700px 520px at 50% 100%,rgba(20,60,160,.28),transparent 60%),#050b1c}
 html[data-theme="light"] body{background:linear-gradient(135deg,#e3f4ff,#f4fbff 60%,#fffbea)}
+html.has-bg body{background:linear-gradient(rgba(3,8,24,.55),rgba(3,8,24,.72)),var(--bgimg) center top/cover fixed no-repeat,#050b1c}
+html[data-theme="light"].has-bg body{background:linear-gradient(135deg,#e3f4ff,#f4fbff 60%,#fffbea)}
+html.has-bg .decor{display:none}
 body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:150px;background:linear-gradient(180deg,transparent,rgba(120,70,30,.4));pointer-events:none;z-index:-1}
 html[data-theme="light"] body::after{display:none}
 .stage{position:relative;max-width:560px;margin:0 auto}
+.dc{display:block;overflow:visible;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5)) drop-shadow(0 0 14px rgba(255,185,90,.28))}
 
-/* الأعلى: الشعار + المصباح + الورقة + العبارة اليدوية */
+/* الأعلى */
 .hero{position:relative;height:176px}
 .lamp{position:absolute;right:-4px;top:-8px;width:118px;pointer-events:none}
-.lamp svg{display:block;width:100%;height:auto}
-.lamp::after{content:"";position:absolute;left:10px;top:30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,110,.45),transparent 65%);z-index:-1}
+.lamp svg{display:block;width:100%;height:auto;filter:drop-shadow(0 0 14px rgba(255,190,90,.5))}
+.lamp::after{content:"";position:absolute;left:0;top:26px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,205,120,.5),transparent 65%);z-index:-1}
 html[data-theme="light"] .lamp::after{display:none}
-.hand{position:absolute;left:0;top:30px;width:34%;transform:rotate(-8deg);font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:16px;line-height:1.55;color:#ffd45e;text-align:center}
-html[data-theme="light"] .hand{color:#b45309}
+.hand{position:absolute;left:0;top:30px;width:34%;transform:rotate(-8deg);font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:16px;line-height:1.55;color:#ffd45e;text-align:center;text-shadow:0 0 10px rgba(255,200,90,.35)}
+html[data-theme="light"] .hand{color:#b45309;text-shadow:none}
 .hand svg{display:block;margin:3px auto 0;width:82%;height:12px}
-.note{position:absolute;right:2%;top:86px;width:28%;min-width:92px;padding:15px 8px 12px;transform:rotate(6deg);background:linear-gradient(160deg,#ffe58a,#f6c844);color:#5a3b00;border-radius:3px;font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:14px;line-height:1.6;box-shadow:0 10px 18px rgba(0,0,0,.45)}
+.note{position:absolute;right:2%;top:86px;width:28%;min-width:92px;padding:15px 8px 12px;transform:rotate(6deg);background:linear-gradient(160deg,#ffe58a,#f6c844);color:#5a3b00;border-radius:3px;font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:14px;line-height:1.6;box-shadow:0 10px 18px rgba(0,0,0,.45),0 0 18px rgba(255,200,90,.3)}
 .note::before{content:"";position:absolute;top:-8px;left:50%;width:42px;height:14px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,255,255,.45);border-radius:2px}
 
-/* أشعة صفراء */
 .rays{position:absolute;top:50%;width:46px;height:64px;transform:translateY(-50%);pointer-events:none}
 .rays i{position:absolute;width:4px;height:20px;border-radius:3px;background:linear-gradient(180deg,#ffd45e,#ff9f1c);box-shadow:0 0 8px rgba(255,190,70,.7)}
 .rays.l{left:-54px}
@@ -42,7 +52,6 @@ html[data-theme="light"] .hand{color:#b45309}
 .rays.r i:nth-child(2){top:22px;right:6px;transform:rotate(90deg)}
 .rays.r i:nth-child(3){bottom:0;right:18px;transform:rotate(-48deg)}
 
-/* الشعار: ثابت، وعند الضغط يدور بالألوان ثم يعيدك إلى الصفحة الرئيسية */
 .orbw{position:absolute;left:50%;top:22px;width:104px;height:104px;margin-left:-52px}
 .orb{position:relative;width:104px;height:104px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
 .orb:focus-visible{outline:3px solid #5aa2ff;outline-offset:8px;border-radius:50%}
@@ -58,11 +67,18 @@ html[data-theme="light"] .hand{color:#b45309}
 @keyframes orbspin{to{transform:rotate(720deg)}}
 @keyframes imgspin{to{transform:rotate(720deg)}}
 
+h1,.tag{position:relative;z-index:1}
 h1{margin-top:8px;font-size:clamp(30px,8vw,40px);font-weight:800;line-height:1.25;color:var(--ink);text-shadow:0 4px 18px rgba(0,0,0,.35)}
 .tag{margin:6px 0 0;color:var(--muted);font-size:15px}
 
-/* البطاقة الكبيرة بإطارها الذهبي */
-.frame{position:relative;margin:20px auto 0;padding:10px;border-radius:34px;border:3px solid #f5b942;background:var(--frame);box-shadow:0 0 0 1px rgba(245,185,66,.25),0 0 26px rgba(245,185,66,.30),inset 0 0 26px rgba(245,185,66,.07);animation:fglow 3.5s ease-in-out infinite alternate}
+/* البطاقة الذهبية وخلفها أوراق النبات */
+.fw{position:relative;margin-top:58px}
+.lf{position:absolute;z-index:0;width:90px;height:105px;top:-62px;clip-path:inset(0 0 40% 0)}
+.lf1{left:7%}
+.lf2{right:7%;transform:scaleX(-1)}
+.frame{position:relative;z-index:1;padding:10px;border-radius:34px;border:3px solid #f5b942;background:var(--frame);box-shadow:0 0 0 1px rgba(245,185,66,.25),0 0 26px rgba(245,185,66,.30),inset 0 0 26px rgba(245,185,66,.07);animation:fglow 3.5s ease-in-out infinite alternate}
+.frame::after{content:"";position:absolute;inset:0;border-radius:31px;pointer-events:none;background:radial-gradient(300px 200px at 100% 0%,rgba(255,200,110,.14),transparent 70%)}
+html[data-theme="light"] .frame::after{display:none}
 @keyframes fglow{from{box-shadow:0 0 0 1px rgba(245,185,66,.2),0 0 18px rgba(245,185,66,.22),inset 0 0 20px rgba(245,185,66,.05)}to{box-shadow:0 0 0 1px rgba(245,185,66,.35),0 0 38px rgba(245,185,66,.45),inset 0 0 30px rgba(245,185,66,.1)}}
 .rows{display:grid;gap:9px}
 .row{position:relative;display:flex;gap:12px;align-items:center;padding:12px 14px 12px 20px;border-radius:20px;overflow:hidden;text-align:right;background:linear-gradient(135deg,var(--rowa),var(--rowb));border:1px solid var(--rowline)}
@@ -75,7 +91,6 @@ h1{margin-top:8px;font-size:clamp(30px,8vw,40px);font-weight:800;line-height:1.2
 .founder b{display:block;margin-top:1px;font-size:18px;font-weight:800;color:#ffc94d}
 html[data-theme="light"] .founder b{color:#b45309}
 
-/* الرسومات: تدور وتتلون عند الضغط عليها */
 .ic{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--c);background:rgba(0,0,0,.28);box-shadow:0 0 10px -2px var(--c);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;font-size:25px}
 html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
 .ic:focus-visible{outline:3px solid #5aa2ff;outline-offset:2px}
@@ -92,30 +107,30 @@ html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
   100%{background-color:rgba(255,77,166,.4);box-shadow:0 0 0 2px #ff4da6,0 0 14px #ff4da6}
 }
 
-/* زر ابدأ التعلم */
 .ctaw{position:relative;width:min(250px,70%);margin:24px auto 0}
 .cta{display:block;padding:13px;border-radius:999px;text-align:center;font-weight:800;font-size:17px;color:#fff;text-decoration:none;background:linear-gradient(180deg,#4a95ff,#0a54e6);box-shadow:0 0 0 2px rgba(120,180,255,.5),0 10px 30px rgba(10,100,255,.55)}
 .cta:hover,.cta:focus-visible{filter:brightness(1.1)}
 
-/* الأزرار السفلية */
 .pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
 .pl{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1.5px solid #2f6bff;color:var(--pl);background:var(--plbg);font:inherit;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer}
 .pl:hover,.pl:focus-visible{background:#2f6bff;color:#fff}
 .pl svg{width:17px;height:17px;fill:none;stroke:#5aa2ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .pl:hover svg,.pl:focus-visible svg{stroke:#fff}
 
-/* المكتب: كتب ودفتر */
-.desk{direction:ltr;display:flex;justify-content:space-between;align-items:flex-end;margin-top:26px;padding:0 2px}
-.books{width:152px}
-.bk{display:flex;align-items:center;justify-content:center;height:34px;margin-top:-1px;border-radius:4px 9px 9px 4px;color:#d6e3ff;font-weight:800;font-size:13px;box-shadow:0 6px 12px rgba(0,0,0,.45);direction:rtl}
-.bk.b1{width:134px;margin-left:12px;background:linear-gradient(180deg,#2a55c0,#14307a)}
-.bk.b2{width:146px;margin-left:4px;background:linear-gradient(180deg,#5a42b8,#34267f)}
-.bk.b3{width:152px;background:linear-gradient(180deg,#22764c,#13492f)}
-.nbw{position:relative;width:156px;height:112px}
-.nb{position:absolute;right:2px;bottom:8px;width:136px;height:92px;padding:8px 12px;border-radius:6px 10px 10px 6px;transform:rotate(-7deg);background:repeating-linear-gradient(180deg,#f5f1e4 0 17px,#cfc8b2 17px 18px);box-shadow:0 14px 24px rgba(0,0,0,.5);display:flex;flex-direction:column;justify-content:center;font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:15px;line-height:1.55;color:#27407a;text-align:center;direction:rtl}
-.nb::before{content:"";position:absolute;left:-4px;top:6px;bottom:6px;width:8px;border-radius:4px;background:repeating-linear-gradient(180deg,#8a8f99 0 6px,transparent 6px 14px)}
-.pen{position:absolute;left:2px;bottom:2px;width:88px;height:7px;border-radius:4px;transform:rotate(-14deg);background:linear-gradient(180deg,#2a3f8f,#0f1d52)}
-.pen::after{content:"";position:absolute;right:-9px;top:0;border-left:9px solid #e6b95a;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+/* المكتب: نبتة وكتب وكوب ودفتر */
+.desk{direction:ltr;display:flex;justify-content:space-between;align-items:flex-end;gap:6px;margin-top:30px}
+.dcl{width:128px}
+.plant{width:100px;height:117px;margin:0 auto -12px;position:relative;z-index:1}
+.books{width:128px}
+.bk{display:flex;align-items:center;justify-content:center;height:30px;margin-top:-1px;border-radius:4px 9px 9px 4px;color:#d6e3ff;font-weight:800;font-size:12px;box-shadow:0 6px 12px rgba(0,0,0,.45),0 0 14px rgba(255,185,90,.18);direction:rtl}
+.bk.b1{width:108px;margin-left:10px;background:linear-gradient(180deg,#2a55c0,#14307a)}
+.bk.b2{width:120px;margin-left:4px;background:linear-gradient(180deg,#5a42b8,#34267f)}
+.bk.b3{width:128px;background:linear-gradient(180deg,#22764c,#13492f)}
+.dnote{flex:1;direction:rtl;align-self:center;font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:14px;line-height:1.6;color:#ffd45e;transform:rotate(-6deg);padding:0 2px;text-shadow:0 0 10px rgba(255,200,90,.35)}
+html[data-theme="light"] .dnote{color:#b45309;text-shadow:none}
+.dcr{width:132px;display:flex;flex-direction:column;align-items:flex-end}
+.mug{width:72px;height:80px;margin-bottom:-14px;position:relative;z-index:1}
+.nb2{width:132px;height:94px}
 
 @media (prefers-reduced-motion:reduce){
   .frame,.ic.go,.orb.go img{animation:none}
@@ -124,6 +139,50 @@ html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<defs>
+<linearGradient id="gLA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5bdc86"/><stop offset="1" stop-color="#0d5430"/></linearGradient>
+<linearGradient id="gLB" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fbf70"/><stop offset="1" stop-color="#0a4526"/></linearGradient>
+<linearGradient id="gLC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8af0a6"/><stop offset="1" stop-color="#12663a"/></linearGradient>
+<linearGradient id="gPot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cdbb9a"/><stop offset=".45" stop-color="#f6ebd6"/><stop offset="1" stop-color="#a8967a"/></linearGradient>
+<linearGradient id="gMug" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9d3c6"/><stop offset=".5" stop-color="#fffaf0"/><stop offset="1" stop-color="#b9b2a2"/></linearGradient>
+<linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf5"/><stop offset="1" stop-color="#e3dcc6"/></linearGradient>
+</defs>
+<symbol id="d-plant" viewBox="0 0 120 140">
+<path d="M60 98C22 100 4 78 8 50C34 54 58 74 60 98Z" fill="url(#gLA)"/>
+<path d="M60 98C98 100 116 78 112 50C86 54 62 74 60 98Z" fill="url(#gLB)"/>
+<path d="M60 96C28 90 14 58 30 26C52 42 66 70 60 96Z" fill="url(#gLC)"/>
+<path d="M60 96C92 90 106 58 90 26C68 42 54 70 60 96Z" fill="url(#gLA)"/>
+<path d="M60 96C40 72 44 36 62 8C80 34 80 70 60 96Z" fill="url(#gLB)"/>
+<path d="M60 96C48 76 38 54 30 26M60 96C72 76 82 54 90 26M60 96C58 66 60 38 62 8M60 98C40 84 22 70 8 50M60 98C80 84 98 70 112 50" stroke="#b9f5c6" stroke-opacity=".5" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+<path d="M34 100h52l-6 34a6 6 0 0 1-6 5H46a6 6 0 0 1-6-5z" fill="url(#gPot)"/>
+<ellipse cx="60" cy="100" rx="26" ry="5" fill="#efe3cb"/>
+<ellipse cx="60" cy="100" rx="21" ry="3.2" fill="#3a2a1a"/>
+</symbol>
+<symbol id="d-mug" viewBox="0 -10 90 100">
+<path d="M64 30h6a12 12 0 0 1 0 28h-6" fill="none" stroke="#ddd5c2" stroke-width="7" stroke-linecap="round"/>
+<path d="M12 18h52v54a14 14 0 0 1-14 14H26a14 14 0 0 1-14-14z" fill="url(#gMug)"/>
+<ellipse cx="38" cy="18" rx="26" ry="5" fill="#2b1c12"/>
+<path d="M48 14L60 -4" stroke="#1d2f78" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M40 14L46 -6" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+<text x="38" y="46" text-anchor="middle" font-family="'Aref Ruqaa','Tajawal',serif" font-size="14" font-weight="700" fill="#2b3a67">أنت</text>
+<text x="38" y="63" text-anchor="middle" font-family="'Aref Ruqaa','Tajawal',serif" font-size="14" font-weight="700" fill="#2b3a67">قادر ♡</text>
+</symbol>
+<symbol id="d-note" viewBox="0 0 170 120">
+<g transform="rotate(-8 85 60)">
+<rect x="20" y="12" width="138" height="96" rx="7" fill="url(#gPaper)"/>
+<path d="M34 38h112M34 56h112M34 74h112M34 92h112" stroke="#9bb0d8" stroke-opacity=".6"/>
+<path d="M14 22h16M14 36h16M14 50h16M14 64h16M14 78h16M14 92h16" stroke="#7d828d" stroke-width="3.4" stroke-linecap="round"/>
+<text x="146" y="34" text-anchor="end" font-family="'Aref Ruqaa','Tajawal',serif" font-size="15" font-weight="700" fill="#27407a">تنظيم ✓</text>
+<text x="146" y="52" text-anchor="end" font-family="'Aref Ruqaa','Tajawal',serif" font-size="15" font-weight="700" fill="#27407a">تركيز ✓</text>
+<text x="146" y="70" text-anchor="end" font-family="'Aref Ruqaa','Tajawal',serif" font-size="15" font-weight="700" fill="#27407a">إنجاز ✓</text>
+<text x="52" y="98" text-anchor="middle" font-family="'Aref Ruqaa','Tajawal',serif" font-size="16" fill="#c0392b">♡</text>
+</g>
+<path d="M8 112L92 96" stroke="#1d2f78" stroke-width="6" stroke-linecap="round"/>
+<path d="M92 96l9-2" stroke="#e6b95a" stroke-width="4" stroke-linecap="round"/>
+</symbol>
+</svg>
+
 <div class="stage">
 
   <header class="hero">
@@ -133,10 +192,13 @@ html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
 
     <div class="lamp" aria-hidden="true">
       <svg viewBox="0 0 120 90">
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22346a"/><stop offset="1" stop-color="#0a1230"/></linearGradient></defs>
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2d4486"/><stop offset="1" stop-color="#0a1230"/></linearGradient>
+          <radialGradient id="lb"><stop offset="0" stop-color="#fff6d2"/><stop offset=".6" stop-color="#ffc95e"/><stop offset="1" stop-color="#ff9f1c"/></radialGradient>
+        </defs>
         <path d="M122 2 L100 14" stroke="#0f1b3d" stroke-width="5" stroke-linecap="round"/>
         <path d="M30 36 Q46 8 86 14 L94 32 Q58 46 30 36Z" fill="url(#lg)" stroke="#34498f" stroke-width="1.5"/>
-        <ellipse cx="62" cy="38" rx="27" ry="6" fill="#ffd9a0" opacity=".95"/>
+        <ellipse cx="62" cy="38" rx="27" ry="6" fill="url(#lb)"/>
       </svg>
     </div>
 
@@ -152,77 +214,82 @@ html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
   <h1>أكاديمية مشكاة</h1>
   <p class="tag">منصة تعليمية عربية للتعلّم بطريقة ممتعة ومنظمة</p>
 
-  <section class="frame">
-    <div class="rows">
+  <div class="fw">
+    <svg class="dc lf lf1 decor" aria-hidden="true"><use href="#d-plant"/></svg>
+    <svg class="dc lf lf2 decor" aria-hidden="true"><use href="#d-plant"/></svg>
 
-      <div class="row" style="--c:#f5b942">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/><path d="M22 9v5"/></svg></div>
-        <div class="rt">
-          <h2>الأطوار</h2>
-          <div class="chips">
-            <span class="chip">📄 التعليم الابتدائي</span>
-            <span class="chip">شهادة التعليم المتوسط (البيام)</span>
-            <span class="chip">الثانوي (الباكالوريا)</span>
-            <span class="chip">الجامعة (قريباً)</span>
+    <section class="frame">
+      <div class="rows">
+
+        <div class="row" style="--c:#f5b942">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/><path d="M22 9v5"/></svg></div>
+          <div class="rt">
+            <h2>الأطوار</h2>
+            <div class="chips">
+              <span class="chip">📄 التعليم الابتدائي</span>
+              <span class="chip">شهادة التعليم المتوسط (البيام)</span>
+              <span class="chip">الثانوي (الباكالوريا)</span>
+              <span class="chip">الجامعة (قريباً)</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row" style="--c:#2ee6a6">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="rt">
-          <h2>الشعب</h2>
-          <div class="chips">
-            <span class="chip">🧪 علوم تجريبية</span>
-            <span class="chip">π رياضيات</span>
-            <span class="chip">⚙️ تقني رياضي</span>
-            <span class="chip">📈 تسيير واقتصاد</span>
+        <div class="row" style="--c:#2ee6a6">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="rt">
+            <h2>الشعب</h2>
+            <div class="chips">
+              <span class="chip">🧪 علوم تجريبية</span>
+              <span class="chip">π رياضيات</span>
+              <span class="chip">⚙️ تقني رياضي</span>
+              <span class="chip">📈 تسيير واقتصاد</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row" style="--c:#ff4d8d">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
-        <div class="rt">
-          <h2>المواد</h2>
-          <p>في الثانوي: الرياضيات والفيزياء والعلوم والعلوم الإسلامية والاقتصاد والهندسة حسب الشعبة. وفي الابتدائي: الرياضيات واللغة العربية والتربية العلمية والتربية الإسلامية، وتُضاف التاريخ والجغرافيا والإنجليزية من السنة الثالثة، والتربية المدنية والفرنسية من السنة الرابعة.</p>
+        <div class="row" style="--c:#ff4d8d">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
+          <div class="rt">
+            <h2>المواد</h2>
+            <p>في الثانوي: الرياضيات والفيزياء والعلوم والعلوم الإسلامية والاقتصاد والهندسة حسب الشعبة. وفي الابتدائي: الرياضيات واللغة العربية والتربية العلمية والتربية الإسلامية، وتُضاف التاريخ والجغرافيا والإنجليزية من السنة الثالثة، والتربية المدنية والفرنسية من السنة الرابعة.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="row" style="--c:#7b8cff">
-        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="17" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
-        <div class="rt">
-          <h2>السنوات</h2>
-          <p>في الابتدائي من السنة الأولى إلى الخامسة، وفي الباكالوريا مواضيع وحلول من 2008 إلى 2026.</p>
+        <div class="row" style="--c:#7b8cff">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="17" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
+          <div class="rt">
+            <h2>السنوات</h2>
+            <p>في الابتدائي من السنة الأولى إلى الخامسة، وفي الباكالوريا مواضيع وحلول من 2008 إلى 2026.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="row" style="--c:#ff6b4a">
-        <div class="ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.2v5.6l5-2.8-5-2.8z"/></svg></div>
-        <div class="rt">
-          <h2>الفيديوهات</h2>
-          <p>شروحات بالفيديو من أساتذة متميزين، منهم نور الدين وإنفينيتي وأميرة شنوف وليديا وعبد الله وكتفي شريف زينة وأيوب وشاوش وبوسعادي وشمس الدين، إضافة إلى حقيبة عكاشة.</p>
+        <div class="row" style="--c:#ff6b4a">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.2v5.6l5-2.8-5-2.8z"/></svg></div>
+          <div class="rt">
+            <h2>الفيديوهات</h2>
+            <p>شروحات بالفيديو من أساتذة متميزين، منهم نور الدين وإنفينيتي وأميرة شنوف وليديا وعبد الله وكتفي شريف زينة وأيوب وشاوش وبوسعادي وشمس الدين، إضافة إلى حقيبة عكاشة.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="row" style="--c:#4da3ff">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8 4.5 3 4.5v14c5 0 7.5.5 9 2 1.5-1.5 4-2 9-2v-14c-5 0-7.5.5-9 2z"/><path d="M12 6.5v14"/></svg></div>
-        <div class="rt">
-          <h2>الدروس</h2>
-          <p>دروس وتمارين مرتبة حسب شعبتك ومادتك ووحدتك، ولكل درس ملخصات وتمارين وفيديوهات وسلاسل تساعدك على المراجعة.</p>
+        <div class="row" style="--c:#4da3ff">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8 4.5 3 4.5v14c5 0 7.5.5 9 2 1.5-1.5 4-2 9-2v-14c-5 0-7.5.5-9 2z"/><path d="M12 6.5v14"/></svg></div>
+          <div class="rt">
+            <h2>الدروس</h2>
+            <p>دروس مرتبة حسب شعبتك ومادتك ووحدتك، ولكل درس ملخصات وتمارين وفيديوهات وسلاسل تساعدك على المراجعة.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="row founder" style="--c:#ffc94d">
-        <div class="ic">👨‍💻</div>
-        <div class="rt">
-          <h2>المؤسس</h2>
-          <b>++++</b>
+        <div class="row founder" style="--c:#ffc94d">
+          <div class="ic">👨‍💻</div>
+          <div class="rt">
+            <h2>المؤسس</h2>
+            <b>++++</b>
+          </div>
         </div>
-      </div>
 
-    </div>
-  </section>
+      </div>
+    </section>
+  </div>
 
   <div class="ctaw">
     <span class="rays l" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -237,15 +304,18 @@ html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
   </nav>
 
   <div class="desk" aria-hidden="true">
-    <div class="books">
-      <div class="bk b1">الرياضيات</div>
-      <div class="bk b2">الفيزياء</div>
-      <div class="bk b3">العلوم</div>
-      <div class="bk b4">العلوم الاسلامية</div>
+    <div class="dcl">
+      <svg class="dc plant decor"><use href="#d-plant"/></svg>
+      <div class="books decor">
+        <div class="bk b1">الرياضيات</div>
+        <div class="bk b2">الفيزياء</div>
+        <div class="bk b3">اللغة العربية</div>
+      </div>
     </div>
-    <div class="nbw">
-      <div class="nb"><span>طموح</span><span>اجتهاد</span><span>نجاح ♡</span></div>
-      <div class="pen"></div>
+    <p class="dnote">خطوة صغيرة كل يوم .. تصنع فرقاً كبيراً ♡</p>
+    <div class="dcr decor">
+      <svg class="dc mug"><use href="#d-mug"/></svg>
+      <svg class="dc nb2"><use href="#d-note"/></svg>
     </div>
   </div>
 
@@ -254,6 +324,14 @@ html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
 (function(){
   var $=function(i){return document.getElementById(i);};
   var root=document.documentElement;
+
+  /* صورة خلفية اختيارية: ضع about-bg.jpg بجانب الصفحة فتظهر تلقائياً */
+  var im=new Image();
+  im.onload=function(){
+    root.style.setProperty('--bgimg','url(about-bg.jpg)');
+    root.classList.add('has-bg');
+  };
+  im.src='about-bg.jpg';
 
   /* الوضع الليلي / النهاري */
   function paint(){
@@ -269,7 +347,6 @@ html[data-theme="light"] .ic{background:rgba(255,255,255,.8)}
     paint();
   };
 
-  /* رجوع */
   $('backb').onclick=function(e){
     e.preventDefault();
     if(history.length>1){history.back();}else{location.href='index.html';}
