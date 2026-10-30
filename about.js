@@ -1911,3 +1911,198 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
   wrap.addEventListener('touchstart',function(){paused=true;},{passive:true});
   wrap.addEventListener('touchend',function(){setTimeout(function(){paused=false;},1500);},{passive:true});
 })();
+/* ===== 42) نافذة «تعرّف على المنصة»: بطاقة «عن منصة همة» بتصميم الصورة ===== */
+(function(){
+  var mb=document.querySelector('#ov .mb');
+  if(!mb) return;
+
+  /* حذف النسخ القديمة إن وُجدت */
+  ['hm-card','hx-wrap','hf-wrap','bd-wrap','hp-wrap','hm2-wrap'].forEach(function(id){
+    var o=document.getElementById(id);
+    if(o) o.remove();
+  });
+
+  /* الخط اليدوي */
+  if(!document.getElementById('aref-font')){
+    var lk=document.createElement('link');
+    lk.id='aref-font';
+    lk.rel='stylesheet';
+    lk.href='https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&display=swap';
+    document.head.appendChild(lk);
+  }
+
+  /* رسومات الديكور (SVG) */
+  if(!document.getElementById('mk-sprite')){
+    var sp=document.createElement('div');
+    sp.id='mk-sprite';
+    sp.style.cssText='position:absolute;width:0;height:0;overflow:hidden';
+    sp.innerHTML=`<svg width="0" height="0" aria-hidden="true" focusable="false">
+<defs>
+<linearGradient id="gLA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5bdc86"/><stop offset="1" stop-color="#0d5430"/></linearGradient>
+<linearGradient id="gLB" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fbf70"/><stop offset="1" stop-color="#0a4526"/></linearGradient>
+<linearGradient id="gLC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8af0a6"/><stop offset="1" stop-color="#12663a"/></linearGradient>
+<linearGradient id="gPot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cdbb9a"/><stop offset=".45" stop-color="#f6ebd6"/><stop offset="1" stop-color="#a8967a"/></linearGradient>
+<linearGradient id="gMug" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9d3c6"/><stop offset=".5" stop-color="#fffaf0"/><stop offset="1" stop-color="#b9b2a2"/></linearGradient>
+<linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf5"/><stop offset="1" stop-color="#e3dcc6"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2d4486"/><stop offset="1" stop-color="#0a1230"/></linearGradient>
+<radialGradient id="gBulb"><stop offset="0" stop-color="#fff6d2"/><stop offset=".6" stop-color="#ffc95e"/><stop offset="1" stop-color="#ff9f1c"/></radialGradient>
+<linearGradient id="gBk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f58c4"/><stop offset="1" stop-color="#13307a"/></linearGradient>
+<linearGradient id="gBk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a42b8"/><stop offset="1" stop-color="#34267f"/></linearGradient>
+<linearGradient id="gBk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22764c"/><stop offset="1" stop-color="#13492f"/></linearGradient>
+</defs>
+<symbol id="d-plant" viewBox="0 0 120 140">
+<path d="M60 98C22 100 4 78 8 50C34 54 58 74 60 98Z" fill="url(#gLA)"/>
+<path d="M60 98C98 100 116 78 112 50C86 54 62 74 60 98Z" fill="url(#gLB)"/>
+<path d="M60 96C28 90 14 58 30 26C52 42 66 70 60 96Z" fill="url(#gLC)"/>
+<path d="M60 96C92 90 106 58 90 26C68 42 54 70 60 96Z" fill="url(#gLA)"/>
+<path d="M60 96C40 72 44 36 62 8C80 34 80 70 60 96Z" fill="url(#gLB)"/>
+<path d="M60 96C48 76 38 54 30 26M60 96C72 76 82 54 90 26M60 96C58 66 60 38 62 8M60 98C40 84 22 70 8 50M60 98C80 84 98 70 112 50" stroke="#b9f5c6" stroke-opacity=".5" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+<path d="M34 100h52l-6 34a6 6 0 0 1-6 5H46a6 6 0 0 1-6-5z" fill="url(#gPot)"/>
+<ellipse cx="60" cy="100" rx="26" ry="5" fill="#efe3cb"/>
+<ellipse cx="60" cy="100" rx="21" ry="3.2" fill="#3a2a1a"/>
+</symbol>
+<symbol id="d-lamp" viewBox="0 0 150 110">
+<path d="M0 4 L50 26" stroke="#0e1736" stroke-width="5" stroke-linecap="round"/>
+<path d="M30 52 C38 16 84 6 118 22 L132 54 C96 72 52 74 30 52Z" fill="url(#gShade)" stroke="#3a5199" stroke-width="1.5"/>
+<ellipse cx="82" cy="54" rx="42" ry="9" fill="url(#gBulb)"/>
+<ellipse cx="82" cy="54" rx="16" ry="4" fill="#fff6d6"/>
+</symbol>
+<symbol id="d-mug" viewBox="0 -10 90 100">
+<path d="M64 30h6a12 12 0 0 1 0 28h-6" fill="none" stroke="#ddd5c2" stroke-width="7" stroke-linecap="round"/>
+<path d="M12 18h52v54a14 14 0 0 1-14 14H26a14 14 0 0 1-14-14z" fill="url(#gMug)"/>
+<ellipse cx="38" cy="18" rx="26" ry="5" fill="#2b1c12"/>
+<path d="M48 14L60 -4" stroke="#1d2f78" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M40 14L46 -6" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+<text x="38" y="46" text-anchor="middle" font-family="'Aref Ruqaa','Tajawal',serif" font-size="14" font-weight="700" fill="#2b3a67">أنت</text>
+<text x="38" y="63" text-anchor="middle" font-family="'Aref Ruqaa','Tajawal',serif" font-size="14" font-weight="700" fill="#2b3a67">قادر ♡</text>
+</symbol>
+<symbol id="d-note" viewBox="0 0 170 120">
+<g transform="rotate(-8 85 60)">
+<rect x="20" y="12" width="138" height="96" rx="7" fill="url(#gPaper)"/>
+<path d="M34 38h112M34 56h112M34 74h112M34 92h112" stroke="#9bb0d8" stroke-opacity=".6"/>
+<path d="M14 22h16M14 36h16M14 50h16M14 64h16M14 78h16M14 92h16" stroke="#7d828d" stroke-width="3.4" stroke-linecap="round"/>
+<text x="146" y="34" text-anchor="end" font-family="'Aref Ruqaa','Tajawal',serif" font-size="15" font-weight="700" fill="#27407a">تنظيم ✓</text>
+<text x="146" y="52" text-anchor="end" font-family="'Aref Ruqaa','Tajawal',serif" font-size="15" font-weight="700" fill="#27407a">تركيز ✓</text>
+<text x="146" y="70" text-anchor="end" font-family="'Aref Ruqaa','Tajawal',serif" font-size="15" font-weight="700" fill="#27407a">إنجاز ✓</text>
+<text x="52" y="98" text-anchor="middle" font-family="'Aref Ruqaa','Tajawal',serif" font-size="16" fill="#c0392b">♡</text>
+</g>
+<path d="M8 112L92 96" stroke="#1d2f78" stroke-width="6" stroke-linecap="round"/>
+<path d="M92 96l9-2" stroke="#e6b95a" stroke-width="4" stroke-linecap="round"/>
+</symbol>
+<symbol id="d-books" viewBox="0 0 170 104">
+<rect x="6" y="70" width="152" height="30" rx="4" fill="url(#gBk3)"/>
+<rect x="150" y="72" width="9" height="26" fill="#efe6cf"/>
+<path d="M22 70v30M28 70v30M136 70v30" stroke="#e6b95a" stroke-opacity=".7" stroke-width="1.5"/>
+<text x="84" y="91" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="15" fill="#e9d8a6">Achieve</text>
+<rect x="14" y="40" width="140" height="30" rx="4" fill="url(#gBk2)"/>
+<rect x="147" y="42" width="9" height="26" fill="#efe6cf"/>
+<path d="M30 40v30M36 40v30" stroke="#e6b95a" stroke-opacity=".7" stroke-width="1.5"/>
+<text x="86" y="61" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="15" fill="#e9d8a6">Dream</text>
+<rect x="22" y="10" width="126" height="30" rx="4" fill="url(#gBk1)"/>
+<rect x="141" y="12" width="9" height="26" fill="#efe6cf"/>
+<path d="M38 10v30M44 10v30" stroke="#e6b95a" stroke-opacity=".7" stroke-width="1.5"/>
+<text x="90" y="31" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="15" fill="#e9d8a6">Study</text>
+</symbol>
+</svg>`;
+    document.body.appendChild(sp);
+  }
+
+  var st=document.createElement('style');
+  st.textContent=`
+.hm2{position:relative;margin-top:24px;padding:12px 12px 16px;border-radius:28px;overflow:hidden;text-align:center;color:#eaf2ff;
+ background:radial-gradient(240px 190px at 0% 0%,rgba(255,176,70,.38),transparent 65%),radial-gradient(220px 260px at 100% 35%,rgba(30,90,220,.30),transparent 70%),linear-gradient(170deg,#0b1a44 0%,#060d26 55%,#03060f 100%);
+ border:1px solid rgba(120,170,255,.28);box-shadow:0 18px 40px rgba(0,8,30,.55),inset 0 0 40px rgba(60,110,255,.12)}
+.hm2.photo{background:linear-gradient(rgba(3,8,24,.5),rgba(3,8,24,.72)),url(himma-bg.jpg) center/cover no-repeat,#060d26}
+.hm2.photo .hm2-o{display:none}
+.hm2 .dcx{display:block;overflow:visible;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5)) drop-shadow(0 0 12px rgba(255,185,90,.3))}
+.hm2-top{direction:ltr;display:flex;justify-content:space-between;align-items:flex-start;min-height:66px}
+.hm2-lamp{width:96px;height:70px;margin:-8px 0 0 -10px;filter:drop-shadow(0 0 16px rgba(255,190,90,.6))}
+.hm2-crown{width:112px;text-align:center;font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:14px;line-height:1.5;color:#ffd45e;transform:rotate(-5deg);margin-top:8px;text-shadow:0 0 10px rgba(255,200,90,.4)}
+.hm2-crown svg{display:block;margin:0 auto 2px;width:34px;height:24px}
+.hm2-t{display:inline-block;margin:0 0 4px;padding:6px 26px 7px;font-size:21px;font-weight:800;color:#1b1203;text-shadow:none;background:linear-gradient(100deg,#ffd45e,#f6b93b);clip-path:polygon(2% 22%,8% 4%,28% 14%,50% 2%,74% 12%,95% 3%,100% 38%,97% 82%,80% 97%,56% 88%,30% 99%,7% 90%,0 62%)}
+.hm2-s{margin:2px 0 12px;font-size:12.5px;font-weight:700;color:#9fd0ff;text-shadow:none}
+.hm2-s::before,.hm2-s::after{content:"";display:inline-block;width:18px;height:2px;margin:0 8px;vertical-align:middle;background:#f5b942}
+.hm2-r{position:relative;display:flex;align-items:center;gap:10px;margin-top:9px;padding:9px 10px 9px 14px;border-radius:26px;overflow:hidden;text-align:right;
+ background:linear-gradient(135deg,var(--t),rgba(8,16,48,.94) 62%);border:1px solid var(--c);box-shadow:0 0 14px -4px var(--c),0 8px 16px rgba(0,0,0,.35)}
+.hm2-r::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c);box-shadow:0 0 12px var(--c)}
+.hm2-n{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;direction:ltr;font-weight:800;font-size:15px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5);
+ background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.35),transparent 55%),var(--c);box-shadow:0 0 14px var(--c)}
+.hm2-x{flex:1;min-width:0}
+.hm2-x b{display:block;font-size:14.5px;font-weight:800;line-height:1.5;color:#fff;text-shadow:none}
+.hm2-x p{margin:1px 0 0;font-size:11.5px;line-height:1.65;font-weight:500;color:#b9cdee;text-shadow:none}
+.hm2-i{flex:none;width:32px;height:32px;fill:none;stroke:var(--c);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px var(--c))}
+.hm2-pill{position:relative;display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:8px 22px;border-radius:999px;background:linear-gradient(135deg,#1c3f9a,#0d1f5c);border:1px solid rgba(120,170,255,.5);box-shadow:0 0 18px rgba(60,110,255,.4);font-weight:800;font-size:14px;color:#fff;text-shadow:none}
+.hm2-pill::before,.hm2-pill::after{content:"";position:absolute;top:50%;width:24px;height:2px;background:#f5b942}
+.hm2-pill::before{right:calc(100% + 8px)}
+.hm2-pill::after{left:calc(100% + 8px)}
+.hm2-desk{direction:ltr;display:flex;justify-content:space-between;align-items:flex-end;gap:4px;margin-top:16px}
+.hm2-l{width:112px}
+.hm2-plant{width:84px;height:98px;margin:0 auto -10px;position:relative;z-index:1}
+.hm2-books{width:112px;height:68px}
+.hm2-mid{flex:1;direction:rtl;align-self:center;font-family:'Aref Ruqaa','Tajawal',serif;font-weight:700;font-size:13px;line-height:1.55;color:#ffd45e;transform:rotate(-6deg);text-shadow:0 0 10px rgba(255,200,90,.35)}
+.hm2-rr{width:112px;display:flex;flex-direction:column;align-items:flex-end}
+.hm2-mug{width:56px;height:62px;margin-bottom:-10px;position:relative;z-index:1}
+.hm2-nb{width:112px;height:80px}
+.hm2-go{display:inline-block;margin-top:14px;padding:10px 26px;border-radius:999px;background:#fff;color:#0b2a5b;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 8px 18px rgba(0,0,0,.3)}
+.hm2-go:hover,.hm2-go:focus-visible{background:#e6efff}`;
+  document.head.appendChild(st);
+
+  var d=document.createElement('div');
+  d.id='hm2-wrap';
+  d.className='hm2';
+  d.innerHTML=`
+<div class="hm2-top">
+  <svg class="hm2-lamp hm2-o"><use href="#d-lamp"/></svg>
+  <div class="hm2-crown"><svg viewBox="0 0 40 28" aria-hidden="true"><path d="M3 24 6 6l9 9 5-11 5 11 9-9 3 18z" fill="none" stroke="#ffd45e" stroke-width="2.4" stroke-linejoin="round"/></svg>طموحك يبدأ من هنا ♡</div>
+</div>
+<h3 class="hm2-t">عن منصة همة ✨</h3>
+<p class="hm2-s">منصة تُبني طموحك .. وتحوّل وقتك إلى إنجاز</p>
+
+<div class="hm2-r" style="--c:#3da2ff;--t:rgba(61,162,255,.28)">
+  <span class="hm2-n">01</span>
+  <div class="hm2-x"><b>مجانية بالكامل</b><p>لا حسابات ولا اشتراكات ولا دفع. تموّل المنصة بإعلانات خفيفة لا تعيق المراجعة.</p></div>
+  <svg class="hm2-i" viewBox="0 0 24 24"><rect x="4" y="3" width="13" height="18" rx="2.5"/><path d="M8 8h5M8 12h3"/><circle cx="17" cy="17" r="4.2"/><path d="m15.2 17 1.4 1.4 2.4-2.6"/></svg>
+</div>
+<div class="hm2-r" style="--c:#8b7bff;--t:rgba(139,123,255,.28)">
+  <span class="hm2-n">02</span>
+  <div class="hm2-x"><b>مرتبة كما تدرس</b><p>الشعبة ← المادة ← الوحدة ← نوع المورد. تصل إلى ما تريده في خطوات قليلة.</p></div>
+  <svg class="hm2-i" viewBox="0 0 24 24"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg>
+</div>
+<div class="hm2-r" style="--c:#2ee6b0;--t:rgba(46,230,176,.24)">
+  <span class="hm2-n">03</span>
+  <div class="hm2-x"><b>مصممة للهاتف</b><p>واجهة عربية خفيفة وسريعة، مع تنقل سفلي يسهل الوصول إليه بإبهام واحد.</p></div>
+  <svg class="hm2-i" viewBox="0 0 24 24"><circle cx="12" cy="14" r="7"/><path d="M12 14v-4M9.5 2.5h5M12 7V4.5M18.3 7.7l1.4-1.4"/></svg>
+</div>
+<div class="hm2-r" style="--c:#f5b942;--t:rgba(245,185,66,.26)">
+  <span class="hm2-n">04</span>
+  <div class="hm2-x"><b>المحتوى يُضاف تدريجيًا</b><p>الأقسام التي تحمل علامة «قيد الإضافة» جاهزة هيكليًا وسيُنشر فيها المحتوى الحقيقي فور تجهيزه.</p></div>
+  <svg class="hm2-i" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12"/><path d="M7 3v3a5 5 0 0 0 10 0V3"/><path d="M7 21v-3a5 5 0 0 1 10 0v3"/></svg>
+</div>
+<div class="hm2-r" style="--c:#ff4d8d;--t:rgba(255,77,141,.26)">
+  <span class="hm2-n">05</span>
+  <div class="hm2-x"><b>مؤسس ومطور منصة همة</b><p>داودي محمد جلال الدين</p></div>
+  <svg class="hm2-i" viewBox="0 0 24 24"><path d="M15 21v-1.5a4.5 4.5 0 0 0-4.5-4.5H6A4.5 4.5 0 0 0 1.5 19.5V21"/><circle cx="8" cy="8" r="4"/><path d="M19 8v6M16 11h6"/></svg>
+</div>
+
+<div class="hm2-pill">♡ معاً نحو مستقبل أفضل</div>
+
+<div class="hm2-desk">
+  <div class="hm2-l hm2-o">
+    <svg class="hm2-plant dcx"><use href="#d-plant"/></svg>
+    <svg class="hm2-books dcx"><use href="#d-books"/></svg>
+  </div>
+  <p class="hm2-mid">خطوة صغيرة كل يوم .. تصنع فرقاً كبيراً ♡</p>
+  <div class="hm2-rr hm2-o">
+    <svg class="hm2-mug dcx"><use href="#d-mug"/></svg>
+    <svg class="hm2-nb dcx"><use href="#d-note"/></svg>
+  </div>
+</div>
+
+<a class="hm2-go" href="https://himma-sigma.vercel.app/" target="_blank" rel="noopener">زيارة منصة همة ←</a>`;
+  mb.appendChild(d);
+
+  /* صورة خلفية اختيارية للبطاقة: ضع himma-bg.jpg بجانب index.html */
+  var im=new Image();
+  im.onload=function(){d.classList.add('photo');};
+  im.src='himma-bg.jpg';
+})();
