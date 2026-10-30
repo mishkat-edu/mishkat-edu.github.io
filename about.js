@@ -2100,9 +2100,4 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
 
 <a class="hm2-go" href="https://himma-sigma.vercel.app/" target="_blank" rel="noopener">زيارة منصة همة ←</a>`;
   mb.appendChild(d);
-
-  /* صورة خلفية اختيارية للبطاقة: ضع himma-bg.jpg بجانب index.html */
-  var im=new Image();
-  im.onload=function(){d.classList.add('photo');};
-  im.src='himma-bg.jpg';
 })();
