@@ -1,4 +1,4 @@
-/* ألوان المنصة: غيّرها من هنا فقط */
+ضرف/* ألوان المنصة: غيّرها من هنا فقط */
 var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',GOLDINK:'#4a3000',GLOW:'rgba(6,120,150,.38)',DEEP:'#086a8c'};
 
 /* ===== 0) توجيه الصفحات حسب الشعبة (ووضع الأستاذ) ===== */
@@ -1836,4 +1836,78 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
   a.addEventListener('blur',function(){paused=false;});
   a.addEventListener('touchstart',function(){paused=true;},{passive:true});
   a.addEventListener('touchend',function(){setTimeout(function(){paused=false;},1500);},{passive:true});
+})();
+/* ===== 41) زر «الباكالوريا»: يتبدّل مثل زر «زورونا» مع نقاط أسفله ===== */
+(function(){
+  var old=document.querySelector('.hbtns2 a.btn.wt, .hbtns2 #bac-alt');
+  if(!old||document.querySelector('.bac-wrap')) return;
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ITEMS=[
+    {t:'الباكالوريا',h:'bac.html'},
+    {t:'الباكالوريا التجريبية',h:'bac-mock.html'}
+  ];
+
+  var st=document.createElement('style');
+  st.textContent=''
+  +'.bac-wrap{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:100%;min-width:0}'
+  +'.bac-wrap .dots{justify-content:center}'
+  +'html body .bac-wrap #bac-alt{background:#0a84ff!important;color:#fff!important;border:2.5px solid #ff9f1c!important;box-shadow:0 10px 24px rgba(10,132,255,.3)!important;font-weight:800}'
+  +'#bac-alt .bsw{display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:opacity .25s,transform .25s}'
+  +'#bac-alt .bsw.out{opacity:0;transform:translateY(-8px)}'
+  +'#bac-alt .bt{font-size:14.5px;line-height:1.25}'
+  +'@media (prefers-reduced-motion:reduce){#bac-alt .bsw{transition:none}}';
+  document.head.appendChild(st);
+
+  var a=document.createElement('a');
+  a.id='bac-alt';
+  a.className='btn wt';
+  a.innerHTML='<span class="bsw"><span class="bi">📝</span><span class="bt"></span></span>';
+
+  var wrap=document.createElement('div');
+  wrap.className='bac-wrap';
+  wrap.appendChild(a);
+
+  var bsw=a.querySelector('.bsw'), bt=a.querySelector('.bt');
+  var i=0, paused=false, timer=null;
+
+  var dots=document.createElement('div');
+  dots.className='dots';
+  ITEMS.forEach(function(it,k){
+    var d=document.createElement('button');
+    d.type='button';
+    d.className='dot';
+    d.setAttribute('aria-label',it.t);
+    d.addEventListener('click',function(){goTo(k);start();});
+    dots.appendChild(d);
+  });
+  wrap.appendChild(dots);
+  old.replaceWith(wrap);
+
+  function draw(){
+    bt.textContent=ITEMS[i].t;
+    a.href=ITEMS[i].h;
+    [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===i);});
+  }
+  function goTo(k){
+    bsw.classList.add('out');
+    setTimeout(function(){
+      i=k;
+      draw();
+      bsw.classList.remove('out');
+    },reduce?0:250);
+  }
+  function start(){
+    clearInterval(timer);
+    timer=setInterval(function(){if(!paused) goTo((i+1)%ITEMS.length);},3000);
+  }
+  draw();
+  start();
+
+  wrap.addEventListener('mouseenter',function(){paused=true;});
+  wrap.addEventListener('mouseleave',function(){paused=false;});
+  wrap.addEventListener('focusin',function(){paused=true;});
+  wrap.addEventListener('focusout',function(){paused=false;});
+  wrap.addEventListener('touchstart',function(){paused=true;},{passive:true});
+  wrap.addEventListener('touchend',function(){setTimeout(function(){paused=false;},1500);},{passive:true});
 })();
