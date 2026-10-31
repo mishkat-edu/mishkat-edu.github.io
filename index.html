@@ -6,9 +6,10 @@
 <title>أكاديمية مشكاة</title>
 <link rel="icon" href="logo.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script>try{if(localStorage.getItem('mishkat_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 <style>
-:root{--blue:#0a84ff;--ink:#101828;--muted:#667085;--bg:#fff;--soft:#f7f9fb;--card:#fff;--line:#eaeef3}
-@media (prefers-color-scheme:dark){:root{--ink:#f2f5f8;--muted:#9aa7b6;--bg:#0d141c;--soft:#121b25;--card:#16212d;--line:#223041}}
+:root{--blue:#0a84ff;--ink:#101828;--muted:#667085;--bg:#fff;--soft:#f7f9fb;--card:#fff;--line:#eaeef3;color-scheme:light}
+html[data-theme="dark"]{--ink:#f2f5f8;--muted:#9aa7b6;--bg:#0d141c;--soft:#121b25;--card:#16212d;--line:#223041;color-scheme:dark}
 :root{--c1:#0a7ba0;--c2:#0f9bbd;--c3:#0b8cae;--gold1:#ffc233;--gold2:#ff9f1c;--goldink:#4a3000;--cglow:rgba(6,120,150,.38);--cdeep:#086a8c}
 *{box-sizing:border-box;margin:0}
 body{font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden}
@@ -17,35 +18,58 @@ a{text-decoration:none;color:inherit}
 header{display:flex;justify-content:space-between;align-items:center;padding:14px 5%;border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
 .logo i{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#38bdf8,var(--blue));color:#fff;display:grid;place-items:center;font-style:normal}
-.lg-img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none;background:#fff;box-shadow:0 4px 12px rgba(10,132,255,.25)}
+.lg-img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none;background:#fff;box-shadow:0 4px 12px rgba(10,132,255,.25);cursor:pointer}
 nav{display:flex;align-items:center;gap:18px;font-size:14px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:999px;font-weight:700;font-size:15px;white-space:nowrap;text-align:center;line-height:1.3}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:999px;border:0;font-weight:700;font-size:15px;white-space:nowrap;text-align:center;line-height:1.3}
 button.btn{font-family:inherit;color:inherit;cursor:pointer}
 .btn.p{background:var(--blue);color:#fff}
 .btn.wt{background:#fff;color:#101828;border:1.5px solid #d0d7e2;box-shadow:0 6px 16px rgba(16,24,40,.08)}
+html[data-theme="dark"] .btn.wt{background:var(--card);color:#fff;border:1.5px solid #0a84ff;box-shadow:none}
+
+/* زر الوضع الليلي / النهاري */
+.tg{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;margin:0;padding:0 14px;border-radius:999px;background:var(--card);color:#0a84ff;border:1.5px solid #0a84ff;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+.tg:hover,.tg:focus-visible{background:#0a84ff;color:#fff}
+.tg .tg-i{display:inline-block}
+@keyframes tgspin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.35)}100%{transform:rotate(360deg) scale(1)}}
+.tg.spin .tg-i{animation:tgspin .65s ease-in-out}
+
+/* دوران الشعار عند الضغط */
+@keyframes lgspin{to{transform:rotate(720deg) scale(1.15)}}
+@keyframes lgglow{
+  0%{box-shadow:0 0 0 2px #ff4d4d,0 0 16px 4px #ff4d4d}
+  16%{box-shadow:0 0 0 2px #ffb703,0 0 16px 4px #ffb703}
+  33%{box-shadow:0 0 0 2px #ffe14d,0 0 16px 4px #ffe14d}
+  50%{box-shadow:0 0 0 2px #2ee6a6,0 0 16px 4px #2ee6a6}
+  66%{box-shadow:0 0 0 2px #38bdf8,0 0 16px 4px #38bdf8}
+  83%{box-shadow:0 0 0 2px #4d7cff,0 0 16px 4px #4d7cff}
+  100%{box-shadow:0 0 0 2px #ff4da6,0 0 16px 4px #ff4da6}
+}
+.lg-img.lg-go{animation:lgspin 1s ease-in-out forwards,lgglow 1s linear forwards}
 
 /* شعار المنصة كخلفية باهتة خلف المحتوى */
 .wm{position:relative;overflow:hidden}
 .wm::before{content:"";position:absolute;top:50%;left:50%;width:min(88vw,540px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:url(logo.jpg) center/cover no-repeat;opacity:.09;pointer-events:none}
+html[data-theme="dark"] .wm::before{opacity:.07}
 .wm>*{position:relative;z-index:1}
 
 .hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;padding:70px 5%;background:linear-gradient(135deg,#e3f4ff,#f4fbff 60%,#fffbea)}
+html[data-theme="dark"] .hero{background:linear-gradient(135deg,#0f2438,#0d141c)}
 .hero>div{min-width:0}
-h1{font-size:clamp(32px,5vw,54px);line-height:1.25;font-weight:800}
+h1{font-size:clamp(32px,5vw,54px);line-height:1.25;font-weight:800;color:var(--ink)}
 h1 span{color:var(--blue)}
 .hero p{color:var(--muted);margin:18px 0 26px;max-width:480px}
 
-/* أزرار الصفحة الرئيسية */
-.hbtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;margin:0}
-.hbtns .btn{width:100%;padding:12px 14px}
+/* أزرار الصفحة الرئيسية بحجم واحد */
+.hbtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;max-width:520px;margin:0}
 .hbtns2{margin-top:12px}
-.soc-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
-.soc{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;padding:9px 12px;border-radius:999px;background:var(--blue);color:#fff;border:2.5px solid #ff9f1c;font-weight:800;font-size:14px;line-height:1.3;text-align:center;box-shadow:0 10px 24px rgba(10,132,255,.3);transition:transform .2s}
+.hbtns .btn,.hbtns .soc{width:100%;height:52px;min-height:52px;padding:8px 12px;margin:0;font-size:15px;border-radius:999px;display:flex;align-items:center;justify-content:center;text-align:center;white-space:normal;line-height:1.25}
+.soc-wrap{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:100%;min-width:0}
+.soc{background:var(--blue);color:#fff;border:2.5px solid #ff9f1c;font-weight:800;box-shadow:0 10px 24px rgba(10,132,255,.3);transition:transform .2s}
 .soc:hover{transform:translateY(-2px)}
 .soc .sw{display:inline-flex;align-items:center;gap:8px;transition:opacity .25s,transform .25s}
 .soc .sw.out{opacity:0;transform:translateY(-8px)}
 .soc svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.dots{display:flex;align-items:center;gap:12px}
+.dots{display:flex;align-items:center;justify-content:center;gap:12px}
 .dot{position:relative;width:10px;height:10px;padding:0;border:0;border-radius:50%;background:rgba(15,155,189,.42);cursor:pointer;transition:transform .35s,background .35s}
 .dot::after{content:"";position:absolute;inset:-9px}
 .dot.on{background:#1bb0d0;transform:scale(1.55);animation:dglow 1.6s ease-in-out infinite}
@@ -57,6 +81,7 @@ h1 span{color:var(--blue)}
 
 /* المربعات الثلاثة: الجامعة والبيام والابتدائي */
 .mock{background:var(--card);border-radius:16px;padding:24px;box-shadow:0 20px 50px rgba(10,132,255,.15)}
+.mshead{font-size:18px;font-weight:800;text-align:center;color:var(--ink);margin:2px 0 14px;letter-spacing:.2px}
 .mock .l{height:10px;border-radius:6px;background:var(--line);margin-bottom:12px}
 .mock .g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
 .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:110px;padding:8px 6px;border-radius:12px;color:#fff;font-weight:800;font-size:14px;line-height:1.35;text-align:center;box-shadow:0 8px 18px rgba(0,0,0,.12);transition:transform .2s}
@@ -66,32 +91,19 @@ h1 span{color:var(--blue)}
 .t-green{background:linear-gradient(135deg,#4ade80,#16a34a)}
 .t-orange{background:linear-gradient(135deg,#ffb347,#f97316)}
 
-/* شريط بطاقات الشعب المتحرك */
-.bmq{direction:ltr;overflow:hidden;margin:0 0 22px;padding:16px 0 24px;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+/* شريط بطاقات الشعب المتحرك: حافة زرقاء عادية بلا توهج */
+.bmq{direction:ltr;overflow:hidden;margin:0 0 22px;padding:12px 0 18px;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
 .btrack{display:flex;width:max-content;animation:bmv var(--dur,30s) linear infinite}
 .bmq:hover .btrack,.bmq:focus-within .btrack,.bmq.paused .btrack{animation-play-state:paused}
 .bset{display:flex;gap:14px;padding-right:14px;flex:none}
 @keyframes bmv{from{transform:translateX(calc(var(--w,0px)*-1))}to{transform:translateX(0)}}
-.bc{flex:none;min-width:206px;white-space:nowrap;direction:rtl;display:flex;align-items:center;gap:10px;min-height:66px;padding:9px 16px 9px 20px;border-radius:999px;background:var(--card);border:2px solid #b266ff;animation:vglow 2.8s ease-in-out infinite;transition:transform .2s}
-.bc:nth-child(2n){animation-delay:-1s}
-.bc:nth-child(3n){animation-delay:-1.9s}
-@keyframes vglow{0%,100%{box-shadow:0 0 6px 0 rgba(168,85,247,.45),0 0 16px 1px rgba(168,85,247,.28)}50%{box-shadow:0 0 10px 1px rgba(192,110,255,.9),0 0 24px 4px rgba(168,85,247,.55)}}
-.bc:hover,.bc:focus-visible{transform:translateY(-3px);border-color:#d9a0ff}
-.bc-i{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+.bc{flex:none;min-width:186px;white-space:nowrap;direction:rtl;display:flex;align-items:center;gap:10px;min-height:58px;padding:7px 14px 7px 16px;border-radius:999px;background:var(--card);background-image:linear-gradient(rgba(10,132,255,.15),rgba(10,132,255,.15));border:2px solid #0a84ff;transition:transform .2s}
+.bc:hover,.bc:focus-visible{transform:translateY(-3px)}
+.bc-i{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(10,132,255,.16);color:#0a84ff}
 .bc-i svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bc-t{display:block;font-weight:800;font-size:14.5px;line-height:1.35}
-.bc-s{display:block;font-size:11.5px;color:var(--muted);line-height:1.35;margin-top:1px}
-.bc-i.g{background:rgba(30,158,87,.16);color:#1e9e57}
-.bc-i.v{background:rgba(124,77,255,.16);color:#7c4dff}
-.bc-i.o{background:rgba(232,130,12,.16);color:#e8820c}
-.bc-i.b{background:rgba(10,132,255,.16);color:#0a84ff}
-@media (min-width:801px){
-  .bc{min-width:236px;min-height:76px}
-  .bc-i{width:44px;height:44px}
-  .bc-i svg{width:22px;height:22px}
-  .bc-t{font-size:16px}
-  .bc-s{font-size:12.5px}
-}
+.bc-t{display:block;font-weight:800;font-size:13.5px;line-height:1.35}
+.bc-s{display:block;font-size:11px;color:var(--muted);line-height:1.35;margin-top:1px}
+@media (min-width:801px){.bc{min-width:212px;min-height:64px}.bc-t{font-size:15px}.bc-s{font-size:12px}}
 
 section.f{background:var(--soft);padding:70px 0;text-align:center}
 section.f h2{font-size:30px;padding:0 5%}
@@ -179,8 +191,18 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
 .cta{margin-top:22px;text-align:center}
 
 @media (max-width:800px){.hero{grid-template-columns:minmax(0,1fr);padding:40px 5%}nav a.h{display:none}.ft-in{grid-template-columns:1fr;gap:24px}}
-@media (max-width:420px){.hbtns .btn{font-size:14px;padding:10px 10px}.tile{font-size:13px}.tile .ti{font-size:22px}}
-@media (prefers-reduced-motion:reduce){.track,.btrack{animation:none}.marquee,.bmq{overflow-x:auto}.bmq{-webkit-mask-image:none;mask-image:none}.mc,.mc::before,.mc::after,.shine{animation:none}.sec{opacity:1;transform:none;transition:none}.ov,.mc{transition:none}.soc .sw{transition:none}.dot{transition:none}.dot.on{animation:none;box-shadow:0 0 10px 3px rgba(27,176,208,.9)}.bc{transition:none;animation:none;box-shadow:0 0 12px 2px rgba(168,85,247,.6)}}
+@media (max-width:480px){
+  header{gap:8px}
+  .logo{font-size:16px}
+  .lg-img{width:36px;height:36px}
+  nav{gap:8px}
+  nav .btn.p{padding:8px 14px;font-size:14px}
+  .tg{width:40px;padding:0}
+  .tg-t{display:none}
+  .tg-i{font-size:18px}
+}
+@media (max-width:420px){.hbtns .btn{font-size:14px;padding:8px 10px}.tile{font-size:13px}.tile .ti{font-size:22px}}
+@media (prefers-reduced-motion:reduce){.track,.btrack{animation:none}.marquee,.bmq{overflow-x:auto}.bmq{-webkit-mask-image:none;mask-image:none}.mc,.mc::before,.mc::after,.shine{animation:none}.sec{opacity:1;transform:none;transition:none}.ov,.mc{transition:none}.soc .sw{transition:none}.dot{transition:none}.dot.on{animation:none;box-shadow:0 0 10px 3px rgba(27,176,208,.9)}.bc{transition:none}.tg.spin .tg-i,.lg-img.lg-go{animation:none}}
 </style>
 </head>
 <body>
@@ -188,6 +210,7 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
   <a class="logo" href="#"><img class="lg-img" src="logo.jpg" alt="شعار أكاديمية مشكاة" onerror="this.outerHTML='<i>م</i>'"> أكاديمية مشكاة</a>
   <nav>
     <a class="h" href="login.html">تسجيل الدخول</a>
+    <button class="tg" id="home-theme" type="button"><span class="tg-i">🌙</span><span class="tg-t">الوضع الليلي</span></button>
     <a class="btn p" href="signup.html">سجّل الآن</a>
   </nav>
 </header>
@@ -202,19 +225,19 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
       <div class="btrack">
         <div class="bset">
           <a class="bc" href="subjects.html" data-b="علوم تجريبية">
-            <span class="bc-i g"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 3C10 10 22 10 22 16C22 22 10 22 10 29"/><path d="M22 3C22 10 10 10 10 16C10 22 22 22 22 29"/><path stroke-width="1.6" d="M12 7H20M12 12.4H20M12 19.6H20M12 24.9H20"/></svg></span>
+            <span class="bc-i"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 3C10 10 22 10 22 16C22 22 10 22 10 29"/><path d="M22 3C22 10 10 10 10 16C10 22 22 22 22 29"/><path stroke-width="1.6" d="M12 7H20M12 12.4H20M12 19.6H20M12 24.9H20"/></svg></span>
             <span><span class="bc-t">شعبة علوم تجريبية</span><span class="bc-s">رياضيات • فيزياء • علوم • إسلامية</span></span>
           </a>
           <a class="bc" href="subjects.html" data-b="رياضيات">
-            <span class="bc-i v"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="3" width="18" height="26" rx="3.5"/><rect x="10" y="6.5" width="12" height="5" rx="1.2"/><path stroke-width="2.6" d="M11 16.5h.01M16 16.5h.01M21 16.5h.01M11 21h.01M16 21h.01M21 21h.01M11 25.2h.01M16 25.2h.01M21 25.2h.01"/></svg></span>
+            <span class="bc-i"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="3" width="18" height="26" rx="3.5"/><rect x="10" y="6.5" width="12" height="5" rx="1.2"/><path stroke-width="2.6" d="M11 16.5h.01M16 16.5h.01M21 16.5h.01M11 21h.01M16 21h.01M21 21h.01M11 25.2h.01M16 25.2h.01M21 25.2h.01"/></svg></span>
             <span><span class="bc-t">شعبة رياضيات</span><span class="bc-s">رياضيات • فيزياء • علوم • إسلامية</span></span>
           </a>
           <a class="bc" href="subjects.html" data-b="تقني رياضي">
-            <span class="bc-i o"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="8" stroke-width="2.2"/><circle cx="16" cy="16" r="3"/><path stroke-width="3.2" d="M16 3.5V6.7M16 25.3V28.5M3.5 16H6.7M25.3 16H28.5M7.2 7.2L9.5 9.5M22.5 22.5L24.8 24.8M24.8 7.2L22.5 9.5M9.5 22.5L7.2 24.8"/></svg></span>
+            <span class="bc-i"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="8" stroke-width="2.2"/><circle cx="16" cy="16" r="3"/><path stroke-width="3.2" d="M16 3.5V6.7M16 25.3V28.5M3.5 16H6.7M25.3 16H28.5M7.2 7.2L9.5 9.5M22.5 22.5L24.8 24.8M24.8 7.2L22.5 9.5M9.5 22.5L7.2 24.8"/></svg></span>
             <span><span class="bc-t">شعبة تقني رياضي</span><span class="bc-s">رياضيات • فيزياء • هندسة • إسلامية</span></span>
           </a>
           <a class="bc" href="subjects.html" data-b="تسيير واقتصاد">
-            <span class="bc-i b"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor" stroke="none"><rect x="5" y="21" width="5" height="7" rx="1.2"/><rect x="13.5" y="17" width="5" height="11" rx="1.2"/><rect x="22" y="13" width="5" height="15" rx="1.2"/></g><path d="M5 15L12 10.5L17 12.5L26 4.5"/><path d="M21 4.5H26V9.5"/></svg></span>
+            <span class="bc-i"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor" stroke="none"><rect x="5" y="21" width="5" height="7" rx="1.2"/><rect x="13.5" y="17" width="5" height="11" rx="1.2"/><rect x="22" y="13" width="5" height="15" rx="1.2"/></g><path d="M5 15L12 10.5L17 12.5L26 4.5"/><path d="M21 4.5H26V9.5"/></svg></span>
             <span><span class="bc-t">شعبة تسيير واقتصاد</span><span class="bc-s">رياضيات • اقتصاد • إسلامية</span></span>
           </a>
         </div>
@@ -227,7 +250,6 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
     </div>
 
     <div class="hbtns hbtns2">
-      <a class="btn wt" href="bac.html">📝 الباكالوريا</a>
       <div class="soc-wrap" id="socwrap">
         <a class="soc" id="soc" href="#" target="_blank" rel="noopener"><span class="sw" id="sw"></span></a>
         <div class="dots" id="dots">
@@ -236,16 +258,18 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
           <button class="dot" type="button"></button>
         </div>
       </div>
+      <a class="btn wt" href="bac.html">📝 الباكالوريا</a>
     </div>
 
     <div class="stats">
-      <div><b>++</b><small>طالب نشط</small></div>
-      <div><b>++</b><small>معلم متميز</small></div>
-      <div><b>++</b><small>درس تفاعلي</small></div>
+      <div><b>+10K</b><small>طالب نشط</small></div>
+      <div><b>+500</b><small>معلم متميز</small></div>
+      <div><b>+1000</b><small>درس تفاعلي</small></div>
     </div>
   </div>
 
   <div class="mock">
+    <div class="mshead">🎓 اختر المشوار الدراسي</div>
     <div class="l" style="width:70%"></div><div class="l"></div><div class="l" style="width:85%"></div>
     <div class="g">
       <a class="tile t-blue" href="university.html"><span class="ti">🎓</span>الجامعة</a>
@@ -268,7 +292,7 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
 
         <div class="fc">
           <span class="tag">📖 دروس منظمة</span>
-          <div class="num">++<small>درس</small></div>
+          <div class="num">+1000<small>درس</small></div>
           <div class="stars" aria-hidden="true">★★★★★</div>
           <p>محتوى مرتب حسب المادة والوحدة ليسهل عليك المتابعة.</p>
           <a class="go" href="branches.html">تصفّح الدروس ←</a>
@@ -276,7 +300,7 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
 
         <div class="fc">
           <span class="tag">👥 معلمون متميزون</span>
-          <div class="num">++<small>معلم</small></div>
+          <div class="num">+500<small>معلم</small></div>
           <div class="stars" aria-hidden="true">★★★★★</div>
           <p>نخبة من المعلمين يشرحون لك بأسلوب بسيط وواضح.</p>
           <a class="go" href="branches.html">ابدأ مع معلمك ←</a>
@@ -380,9 +404,7 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
           <li>حساب شخصي يحفظ شعبتك ومادتك</li>
           <li>وضع ليلي مريح للعين أثناء المراجعة</li>
           <li>تعمل بسلاسة على الهاتف والكمبيوتر</li>
-             <li>التعليم الجامعي سيضاف قريبا</  li>
- <li>التعليم الابتدائي من السنة الأولى إلى السنة الخامسة</ li>
-      </ul>
+        </ul>
       </div>
 
       <div class="sec">
@@ -411,6 +433,42 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
     facebook:S+'<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5c0-.3.2-.5.5-.5Z"/></svg>'
   };
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root=document.documentElement;
+  var $=function(i){return document.getElementById(i);};
+
+  /* الوضع الليلي / النهاري: نهاري افتراضياً، ويدور الرمز عند الضغط */
+  var htb=$('home-theme'), tic=htb.querySelector('.tg-i'), ttx=htb.querySelector('.tg-t');
+  var dark=root.getAttribute('data-theme')==='dark';
+  function applyTheme(){
+    if(dark){root.setAttribute('data-theme','dark');}else{root.removeAttribute('data-theme');}
+    tic.textContent=dark?'☀️':'🌙';
+    ttx.textContent=dark?'الوضع النهاري':'الوضع الليلي';
+    htb.setAttribute('aria-label',dark?'الوضع النهاري':'الوضع الليلي');
+  }
+  applyTheme();
+  htb.addEventListener('click',function(){
+    dark=!dark;
+    applyTheme();
+    try{localStorage.setItem('mishkat_theme',dark?'dark':'light');}catch(e){}
+    htb.classList.remove('spin');
+    void htb.offsetWidth;
+    htb.classList.add('spin');
+    setTimeout(function(){htb.classList.remove('spin');},700);
+  });
+
+  /* شعار الشريط العلوي: يدور بأضواء ملونة ثم يفتح «عن المنصة» */
+  var lg=document.querySelector('header .lg-img');
+  if(lg){
+    var lgBusy=false;
+    lg.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(lgBusy) return;
+      lgBusy=true;
+      lg.classList.add('lg-go');
+      setTimeout(function(){location.href='about.html';},reduce?0:1000);
+    });
+  }
 
   /* شريط متحرك عام */
   function marquee(m,trackSel,setSel,speed){
@@ -439,11 +497,11 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
     m.addEventListener('touchstart',function(){clearTimeout(p);m.classList.add('paused');},{passive:true});
     m.addEventListener('touchend',function(){p=setTimeout(function(){m.classList.remove('paused');},1500);},{passive:true});
   }
-  marquee(document.getElementById('bq'),'.btrack','.bset',40);
-  marquee(document.getElementById('mq'),'.track','.set',55);
+  marquee($('bq'),'.btrack','.bset',40);
+  marquee($('mq'),'.track','.set',55);
 
   /* بطاقات الشعب: تحفظ الشعبة ثم تفتح صفحة المواد */
-  document.getElementById('bq').addEventListener('click',function(e){
+  $('bq').addEventListener('click',function(e){
     var a=e.target.closest?e.target.closest('.bc'):null;
     if(!a) return;
     try{
@@ -454,7 +512,7 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
 
   /* زر التواصل: يتبدّل كل 3 ثوانٍ مع النقاط */
   var keys=['telegram','instagram','facebook'], idx=0, paused=false, timer=null;
-  var soc=document.getElementById('soc'), sw=document.getElementById('sw'), wrap=document.getElementById('socwrap');
+  var soc=$('soc'), sw=$('sw'), wrap=$('socwrap');
   var dots=[].slice.call(document.querySelectorAll('#dots .dot'));
   function drawSoc(){
     var k=keys[idx];
@@ -496,26 +554,26 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
   });
 
   /* الأزرار العائمة */
-  var tt=document.getElementById('tt'), tmo;
+  var tt=$('tt'), tmo;
   function say(msg){
     tt.textContent=msg;
     tt.classList.add('on');
     clearTimeout(tmo);
     tmo=setTimeout(function(){tt.classList.remove('on');},2200);
   }
-  document.getElementById('fab-share').addEventListener('click',function(){
+  $('fab-share').addEventListener('click',function(){
     var data={title:'أكاديمية مشكاة',text:'تعلّم بطريقة ممتعة ومنظمة',url:location.href};
     if(navigator.share){navigator.share(data).catch(function(){});}
     else if(navigator.clipboard&&navigator.clipboard.writeText){
       navigator.clipboard.writeText(location.href).then(function(){say('تم نسخ رابط الموقع ✓');});
     }else{say('انسخ الرابط من شريط العنوان');}
   });
-  var up=document.getElementById('fab-up');
+  var up=$('fab-up');
   up.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
   window.addEventListener('scroll',function(){up.classList.toggle('on',window.scrollY>300);},{passive:true});
 
   /* نافذة التعريف بالمنصة */
-  var ov=document.getElementById('ov'), openB=document.getElementById('about-open'), closeB=document.getElementById('about-close');
+  var ov=$('ov'), openB=$('about-open'), closeB=$('about-close');
   var mc=ov.querySelector('.mc'), mb=ov.querySelector('.mb'), opener=null;
   function openM(){
     opener=document.activeElement;
@@ -535,7 +593,7 @@ section.f>p{color:var(--muted);margin-bottom:30px;padding:0 5%}
     if(opener) opener.focus();
   }
   openB.addEventListener('click',openM);
-  document.getElementById('ft-about').addEventListener('click',function(e){e.preventDefault();openM();});
+  $('ft-about').addEventListener('click',function(e){e.preventDefault();openM();});
   closeB.addEventListener('click',closeM);
   ov.addEventListener('click',function(e){if(e.target===ov) closeM();});
   document.addEventListener('keydown',function(e){
