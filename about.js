@@ -1784,7 +1784,7 @@ var MK={C1:'#0a7ba0',C2:'#0f9bbd',C3:'#0b8cae',GOLD1:'#ffc233',GOLD2:'#ff9f1c',G
     setTimeout(function(){btn.classList.remove('spin');},700);
   });
 })();
-/* ===== 40) الصفحة الرئيسية: زر «الباكالوريا» يتبدّل كل 3 ثوانٍ إلى «الباكالوريا التجريبية» ===== */
+/* ===== 39) الصفحة الرئيسية: زر «الباكالوريا» يتبدّل كل 3 ثوانٍ إلى «الباكالوريا التجريبية» ===== */
 (function(){
   var a=document.querySelector('.hbtns2 a.btn.wt')||document.querySelector('.hbtns a[href="bac.html"]');
   if(!a||a.getAttribute('data-alt')) return;
